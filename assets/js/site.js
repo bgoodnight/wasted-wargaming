@@ -122,10 +122,8 @@ function eventDetail(label, value, field, event) {
 }
 
 function eventShareUrl(event) {
-  const url = new URL(window.location.href);
-  url.search = '';
-  url.searchParams.set('event', event.id);
-  url.hash = 'events';
+  if (!event?.detailsUrl) return null;
+  const url = new URL(event.detailsUrl, window.location.href);
   return url.href;
 }
 
@@ -149,7 +147,127 @@ function shareIcon(name) {
 }
 
 function eventShareButton(event) {
+  if (!event.detailsUrl) {
+    return `<button class="button event-card__share-trigger" type="button" disabled data-event-card-action aria-label="Sharing will be available when the full briefing is published">${shareIcon('share')}<span>Share unavailable</span></button>`;
+  }
   return `<button class="button event-card__share-trigger" type="button" data-event-share-open data-event-id="${escapeHtml(event.id)}" data-event-card-action>${shareIcon('share')}<span>Share</span></button>`;
+}
+
+const eventRecords = window.WASTED_WARGAMING_EVENT_DATA?.events || [];
+const shareDialog = eventRecords.length ? document.createElement('dialog') : null;
+let activeShareEvent;
+let shareReturnFocus;
+
+function shareDestination(name, label, href, icon) {
+  return `<a class="event-share-dialog__option" href="${href}" ${name === 'email' || name === 'sms' ? '' : 'target="_blank" rel="noopener noreferrer"'} data-share-destination="${name}" aria-label="Share with ${label}">${shareIcon(icon || name)}<span>${label}</span></a>`;
+}
+
+function openEventShareDialog(eventRecord, trigger) {
+  const url = eventShareUrl(eventRecord);
+  if (!shareDialog || !url) return;
+  const title = `${eventRecord.title} | Wasted Wargaming`;
+  const message = `${eventRecord.title}: ${eventRecord.gameSystem}. ${eventRecord.status}.`;
+  const messageWithUrl = `${message} ${url}`;
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(title);
+  const encodedMessage = encodeURIComponent(messageWithUrl);
+  const artUrl = eventRecord.artSrc ? new URL(eventRecord.artSrc, window.location.href).href : '';
+  const encodedArt = encodeURIComponent(artUrl);
+  activeShareEvent = eventRecord;
+  shareReturnFocus = trigger;
+  shareDialog.innerHTML = `
+    <div class="event-share-dialog__panel">
+      <button class="event-share-dialog__close" type="button" data-event-share-close aria-label="Close sharing options">${shareIcon('close')}</button>
+      <p class="event-share-dialog__eyebrow">Transmit mission</p>
+      <h2 id="event-share-dialog-title">Share this event</h2>
+      <div class="event-share-dialog__preview" style="--share-art: url(&quot;${escapeHtml(artUrl)}&quot;)">
+        <img src="assets/images/branding/wasted-wargaming-logo.png" alt="" width="1536" height="1024">
+        <div><strong>${escapeHtml(eventRecord.title)}</strong><span>${escapeHtml(url)}</span></div>
+      </div>
+      <p class="event-share-dialog__hint">Choose a destination. Each option sends the event link in the format that platform accepts.</p>
+      <div class="event-share-dialog__options" aria-label="Sharing destinations">
+        <button class="event-share-dialog__option" type="button" data-event-copy-link aria-label="Copy event link">${shareIcon('copy')}<span>Copy link</span></button>
+        <button class="event-share-dialog__option" type="button" data-event-share-discord aria-label="Copy a Discord-ready event message">${shareIcon('discord')}<span>Discord</span></button>
+        <button class="event-share-dialog__option" type="button" data-event-share-native aria-label="Open device sharing options">${shareIcon('share')}<span>Share</span></button>
+        ${shareDestination('sms', 'Message', `sms:?&body=${encodedMessage}`)}
+        ${shareDestination('facebook', 'Facebook', `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`)}
+        ${shareDestination('bluesky', 'Bluesky', `https://bsky.app/intent/compose?text=${encodedMessage}`)}
+        ${shareDestination('reddit', 'Reddit', `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`)}
+        ${shareDestination('whatsapp', 'WhatsApp', `https://api.whatsapp.com/send?text=${encodedMessage}`)}
+        ${shareDestination('linkedin', 'LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`)}
+        ${shareDestination('x', 'X', `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodedUrl}`)}
+        ${shareDestination('email', 'Email', `mailto:?subject=${encodedTitle}&body=${encodedMessage}`)}
+        ${artUrl ? shareDestination('pinterest', 'Pinterest', `https://www.pinterest.com/pin/create/button/?url=${encodedUrl}&media=${encodedArt}&description=${encodeURIComponent(message)}`) : ''}
+      </div>
+      <p class="event-share-dialog__feedback" data-event-share-feedback role="status" aria-live="polite"></p>
+    </div>
+  `;
+  document.dispatchEvent(new CustomEvent('eventshareopen', { detail: { eventId: eventRecord.id } }));
+  shareDialog.showModal();
+}
+
+if (shareDialog) {
+  shareDialog.className = 'event-share-dialog';
+  shareDialog.setAttribute('aria-labelledby', 'event-share-dialog-title');
+  document.body.append(shareDialog);
+
+  document.querySelectorAll('[data-event-share-open]').forEach((trigger) => {
+    if (!trigger.querySelector('svg')) trigger.insertAdjacentHTML('afterbegin', shareIcon('share'));
+  });
+
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-event-share-open]');
+    if (!trigger || trigger.disabled) return;
+    const eventId = trigger.dataset.eventId || document.body.dataset.eventPageId;
+    const eventRecord = eventRecords.find((record) => record.id === eventId);
+    if (eventRecord) openEventShareDialog(eventRecord, trigger);
+  });
+
+  shareDialog.addEventListener('click', async (event) => {
+    const feedback = shareDialog.querySelector('[data-event-share-feedback]');
+    if (event.target === shareDialog || event.target.closest('[data-event-share-close]')) {
+      shareDialog.close();
+      return;
+    }
+    if (!activeShareEvent) return;
+    if (event.target.closest('[data-event-share-native]')) {
+      const shareData = {
+        title: `${activeShareEvent.title} | Wasted Wargaming`,
+        text: `${activeShareEvent.title}: ${activeShareEvent.gameSystem}. ${activeShareEvent.status}.`,
+        url: eventShareUrl(activeShareEvent)
+      };
+      if (navigator.share) {
+        try { await navigator.share(shareData); } catch (error) {
+          if (error.name !== 'AbortError' && feedback) feedback.textContent = 'Sharing was unavailable.';
+        }
+      } else if (feedback) {
+        feedback.textContent = 'Device sharing is unavailable here. Choose another option.';
+      }
+    }
+    if (event.target.closest('[data-event-copy-link]')) {
+      try {
+        await navigator.clipboard.writeText(eventShareUrl(activeShareEvent));
+        if (feedback) feedback.textContent = 'Link copied.';
+      } catch {
+        if (feedback) feedback.textContent = 'Copy unavailable. Use your browser address bar.';
+      }
+    }
+    if (event.target.closest('[data-event-share-discord]')) {
+      const discordMessage = `**${activeShareEvent.title}**\n${activeShareEvent.gameSystem}\n${activeShareEvent.status}\n${eventShareUrl(activeShareEvent)}`;
+      try {
+        await navigator.clipboard.writeText(discordMessage);
+        if (feedback) feedback.textContent = 'Discord-ready message copied. Paste it into the community Discord.';
+      } catch {
+        if (feedback) feedback.textContent = 'Copy unavailable. Copy the event link from your browser.';
+      }
+    }
+  });
+
+  shareDialog.addEventListener('close', () => {
+    document.dispatchEvent(new CustomEvent('eventshareclose', { detail: { eventId: activeShareEvent?.id } }));
+    shareReturnFocus?.focus();
+    activeShareEvent = undefined;
+  });
 }
 
 function renderEventCard(event, index, total) {
@@ -210,59 +328,7 @@ if (eventDossier && eventStack) {
   let activeEventIndex = Math.max(0, events.findIndex((event) => event.id === requestedEvent));
   let eventRotationTimer;
   let eventScrollTimer;
-  let shareReturnFocus;
   const eventPauseReasons = new Set();
-
-  const shareDialog = document.createElement('dialog');
-  shareDialog.className = 'event-share-dialog';
-  shareDialog.setAttribute('aria-labelledby', 'event-share-dialog-title');
-  document.body.append(shareDialog);
-
-  function shareDestination(name, label, href, icon) {
-    return `<a class="event-share-dialog__option" href="${href}" ${name === 'email' || name === 'sms' ? '' : 'target="_blank" rel="noopener noreferrer"'} data-share-destination="${name}" aria-label="Share with ${label}">${shareIcon(icon || name)}<span>${label}</span></a>`;
-  }
-
-  function openShareDialog(eventRecord, trigger) {
-    const url = eventShareUrl(eventRecord);
-    const title = `${eventRecord.title} | Wasted Wargaming`;
-    const message = `${eventRecord.title}: ${eventRecord.gameSystem}. ${eventRecord.status}.`;
-    const messageWithUrl = `${message} ${url}`;
-    const encodedUrl = encodeURIComponent(url);
-    const encodedTitle = encodeURIComponent(title);
-    const encodedMessage = encodeURIComponent(messageWithUrl);
-    const artUrl = eventRecord.artSrc ? new URL(eventRecord.artSrc, window.location.href).href : '';
-    const encodedArt = encodeURIComponent(artUrl);
-    shareReturnFocus = trigger;
-    shareDialog.innerHTML = `
-      <div class="event-share-dialog__panel">
-        <button class="event-share-dialog__close" type="button" data-event-share-close aria-label="Close sharing options">${shareIcon('close')}</button>
-        <p class="event-share-dialog__eyebrow">Transmit mission</p>
-        <h2 id="event-share-dialog-title">Share this event</h2>
-        <div class="event-share-dialog__preview" style="--share-art: url(&quot;${escapeHtml(artUrl)}&quot;)">
-          <img src="assets/images/branding/wasted-wargaming-logo.png" alt="" width="1536" height="1024">
-          <div><strong>${escapeHtml(eventRecord.title)}</strong><span>${escapeHtml(url)}</span></div>
-        </div>
-        <p class="event-share-dialog__hint">Choose a destination. Each option sends the event link in the format that platform accepts.</p>
-        <div class="event-share-dialog__options" aria-label="Sharing destinations">
-          <button class="event-share-dialog__option" type="button" data-event-copy-link aria-label="Copy event link">${shareIcon('copy')}<span>Copy link</span></button>
-          <button class="event-share-dialog__option" type="button" data-event-share-discord aria-label="Copy a Discord-ready event message">${shareIcon('discord')}<span>Discord</span></button>
-          <button class="event-share-dialog__option" type="button" data-event-share-native aria-label="Open device sharing options">${shareIcon('share')}<span>Share</span></button>
-          ${shareDestination('sms', 'Message', `sms:?&body=${encodedMessage}`)}
-          ${shareDestination('facebook', 'Facebook', `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`)}
-          ${shareDestination('bluesky', 'Bluesky', `https://bsky.app/intent/compose?text=${encodedMessage}`)}
-          ${shareDestination('reddit', 'Reddit', `https://www.reddit.com/submit?url=${encodedUrl}&title=${encodedTitle}`)}
-          ${shareDestination('whatsapp', 'WhatsApp', `https://api.whatsapp.com/send?text=${encodedMessage}`)}
-          ${shareDestination('linkedin', 'LinkedIn', `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`)}
-          ${shareDestination('x', 'X', `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}&url=${encodedUrl}`)}
-          ${shareDestination('email', 'Email', `mailto:?subject=${encodedTitle}&body=${encodedMessage}`)}
-          ${artUrl ? shareDestination('pinterest', 'Pinterest', `https://www.pinterest.com/pin/create/button/?url=${encodedUrl}&media=${encodedArt}&description=${encodeURIComponent(message)}`) : ''}
-        </div>
-        <p class="event-share-dialog__feedback" data-event-share-feedback role="status" aria-live="polite"></p>
-      </div>
-    `;
-    pauseEventRotation('share');
-    shareDialog.showModal();
-  }
 
   const cards = events.map((event, index) => renderEventCard(event, index, events.length));
   eventStack.replaceChildren(...cards);
@@ -329,56 +395,8 @@ if (eventDossier && eventStack) {
     if (document.hidden) pauseEventRotation('visibility');
     else resumeEventRotation('visibility');
   });
-
-  eventDossier.addEventListener('click', async (event) => {
-    const activeEvent = events[activeEventIndex];
-    const trigger = event.target.closest('[data-event-share-open]');
-    if (trigger) openShareDialog(activeEvent, trigger);
-  });
-
-  shareDialog.addEventListener('click', async (event) => {
-    const feedback = shareDialog.querySelector('[data-event-share-feedback]');
-    const activeEvent = events[activeEventIndex];
-    if (event.target === shareDialog || event.target.closest('[data-event-share-close]')) {
-      shareDialog.close();
-      return;
-    }
-    if (event.target.closest('[data-event-share-native]')) {
-      const shareData = {
-        title: `${activeEvent.title} | Wasted Wargaming`,
-        text: `${activeEvent.title}: ${activeEvent.gameSystem}. ${activeEvent.status}.`,
-        url: eventShareUrl(activeEvent)
-      };
-      if (navigator.share) {
-        try { await navigator.share(shareData); } catch (error) {
-          if (error.name !== 'AbortError' && feedback) feedback.textContent = 'Sharing was unavailable.';
-        }
-      } else if (feedback) {
-        feedback.textContent = 'Device sharing is unavailable here. Choose another option.';
-      }
-    }
-    if (event.target.closest('[data-event-copy-link]')) {
-      try {
-        await navigator.clipboard.writeText(eventShareUrl(activeEvent));
-        if (feedback) feedback.textContent = 'Link copied.';
-      } catch {
-        if (feedback) feedback.textContent = 'Copy unavailable. Use your browser address bar.';
-      }
-    }
-    if (event.target.closest('[data-event-share-discord]')) {
-      const discordMessage = `**${activeEvent.title}**\n${activeEvent.gameSystem}\n${activeEvent.status}\n${eventShareUrl(activeEvent)}`;
-      try {
-        await navigator.clipboard.writeText(discordMessage);
-        if (feedback) feedback.textContent = 'Discord-ready message copied. Paste it into the community Discord.';
-      } catch {
-        if (feedback) feedback.textContent = 'Copy unavailable. Copy the event link from your browser.';
-      }
-    }
-  });
-  shareDialog.addEventListener('close', () => {
-    resumeEventRotation('share');
-    shareReturnFocus?.focus();
-  });
+  document.addEventListener('eventshareopen', () => pauseEventRotation('share'));
+  document.addEventListener('eventshareclose', () => resumeEventRotation('share'));
 
   selectEvent(activeEventIndex, false);
 }

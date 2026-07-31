@@ -5,6 +5,7 @@
   const galleryIsCurrent = currentFile === 'gallery.html' || currentFile === 'contributor.html';
   const commanderIsCurrent = currentFile === 'commander.html' || currentFile === 'commander-thanks.html';
   const eventsAreCurrent = currentFile === 'joint-ops.html';
+  const pathsAreCurrent = currentFile === 'recruit.html' || currentFile === 'veteran.html';
 
   const currentAttribute = (condition) => condition ? ' aria-current="page"' : '';
 
@@ -22,7 +23,7 @@
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
         <a href="${homeLink('#about')}">What we're building</a>
         <a href="${homeLink('#events')}"${currentAttribute(eventsAreCurrent)}>Upcoming events</a>
-        <a href="${homeLink('#roles')}">Choose your path</a>
+        <a href="${homeLink('#roles')}"${currentAttribute(pathsAreCurrent)}>Choose your path</a>
         <a href="${homeLink('#how-it-works')}">How it works</a>
         <a href="${homeLink('#partners')}">Partners</a>
         <a href="gallery.html"${currentAttribute(galleryIsCurrent)}>Gallery</a>

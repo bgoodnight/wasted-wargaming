@@ -1,5 +1,6 @@
 // Keep confirmed event information here so it works on GitHub Pages and in a local file preview.
 // Unconfirmed fields should remain clearly labeled rather than guessed.
+// detailsUrl is also the canonical sharing destination. Leave it blank until the event page exists.
 window.WASTED_WARGAMING_EVENT_DATA = {
   events: [
     {

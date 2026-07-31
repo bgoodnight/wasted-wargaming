@@ -8,13 +8,16 @@
   <link rel="icon" type="image/png" sizes="256x256" href="assets/images/branding/wasted-wargaming-favicon.png">
   <link rel="apple-touch-icon" href="assets/images/branding/wasted-wargaming-favicon.png">
   <title>Joint Ops: Tomb World | Wasted Wargaming</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260731-faction-reveal">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260731-event-page-sharing">
+  <script src="assets/js/events-data.js?v=20260731-octarius" defer></script>
   <script src="assets/js/gallery-data.js?v=20260731-gallery-batch-2" defer></script>
   <script src="assets/js/navigation.js?v=20260731-shared-nav" defer></script>
-  <script src="assets/js/site.js?v=20260731-event-card-art" defer></script>
+  <script src="assets/js/site.js?v=20260731-event-page-sharing" defer></script>
   <script src="assets/js/joint-ops-gallery.js?v=20260731-featured-fallback" defer></script>
 </head>
-<body class="joint-ops-page">
+<!-- Future event pages can reuse sharing by loading events-data.js, setting data-event-page-id,
+     and adding data-event-share-open to any Share button. -->
+<body class="joint-ops-page" data-event-page-id="first-gathering-tbd">
   <a class="skip-link" href="#main">Skip to the mission briefing</a>
 
   <header class="site-header site-header--solid joint-ops-header" data-header data-site-navigation>
@@ -32,6 +35,7 @@
         <div class="joint-ops-hero__actions">
           <a class="button button--primary" href="#expect">See what happens at the table</a>
           <a class="button button--ghost" href="#resources">Open the free rules</a>
+          <button class="button button--ghost event-page-share" type="button" data-event-share-open>Share mission</button>
         </div>
       </div>
       <ul class="joint-ops-facts" aria-label="Mission quick facts">
@@ -198,7 +202,8 @@
           <article><span>Future path</span><h3>Narrative campaign</h3><p>Keep a team together through linked missions, evolving rivalries, and a story that grows around the tables.</p></article>
           <div class="after-action__buttons">
             <a class="button button--primary" href="index.html#events">Check event status</a>
-            <a class="button button--ghost" href="index.html#recruits">Return to the recruit briefing</a>
+            <a class="button button--ghost" href="recruit.html">Return to the recruit briefing</a>
+            <button class="button button--ghost event-page-share" type="button" data-event-share-open>Share mission</button>
           </div>
         </div>
       </div>
