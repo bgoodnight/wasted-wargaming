@@ -4,10 +4,10 @@ window.WASTED_WARGAMING_EVENT_DATA = {
   events: [
     {
       id: 'first-gathering-tbd',
-      status: 'Mission format confirmed — first date incoming',
+      status: 'Mission format confirmed: first date incoming',
       title: 'Warhammer 40,000: Kill Team',
       message: 'Start with Happy Hour at Joystick, meet the group, and walk together to Dice City for a guided cooperative game. Complete beginners will share the table with an experienced Commander, with everything needed to play waiting at the store.',
-      dateDisplay: 'Wednesdays — first event date to be announced',
+      dateDisplay: 'Wednesdays: first event date to be announced',
       timeDisplay: '6 PM happy hour; 7 PM walk; games until 10 PM',
       meetLocation: 'Joystick Gamebar',
       playLocation: 'Dice City Games',

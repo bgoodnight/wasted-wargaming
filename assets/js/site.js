@@ -28,6 +28,15 @@ document.querySelectorAll('[data-year]').forEach((element) => {
   element.textContent = new Date().getFullYear();
 });
 
+function revealHashDetails() {
+  const targetId = window.location.hash.slice(1);
+  const target = targetId ? document.getElementById(targetId) : null;
+  if (target?.tagName === 'DETAILS') target.open = true;
+}
+
+window.addEventListener('hashchange', revealHashDetails);
+revealHashDetails();
+
 const eventCard = document.querySelector('[data-event-card]');
 
 function escapeHtml(value) {
