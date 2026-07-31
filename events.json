@@ -2,17 +2,19 @@
   "events": [
     {
       "id": "first-gathering-tbd",
-      "status": "Details being assembled",
-      "title": "Next event announcement incoming",
-      "message": "Our Wednesday learn-to-play gathering welcomes recruits, veterans, and commanders. The first event date, capacity, and RSVP information will appear here once confirmed.",
+      "status": "Mission details confirmed — date incoming",
+      "title": "Warhammer 40,000: Kill Team",
+      "message": "Join a guided, cooperative first game built for complete beginners. We provide the miniatures, terrain, dice, and rules support; the mission briefing has the full story and table details.",
       "dateDisplay": "Wednesdays — first event date to be announced",
       "timeDisplay": "6 PM happy hour; 7 PM walk; games until 10 PM",
       "meetLocation": "Joystick Gamebar",
       "playLocation": "Dice City Games",
       "costDisplay": "$10 Dice City table fee; no added event fee",
-      "gameSystem": "Kill Team: Joint Ops learn-to-play",
+      "gameSystem": "Warhammer 40,000: Kill Team",
       "availability": "RSVP not yet open",
-      "rsvpUrl": "TBD"
+      "rsvpUrl": "TBD",
+      "detailsUrl": "joint-ops.html",
+      "detailsLabel": "Read the mission briefing"
     }
   ],
   "fallback": {

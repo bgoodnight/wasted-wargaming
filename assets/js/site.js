@@ -46,9 +46,12 @@ function eventDetail(label, value) {
 
 function renderEvent(event) {
   const hasRsvp = Boolean(event.rsvpUrl && event.rsvpUrl !== 'TBD');
-  const button = hasRsvp
+  const rsvpButton = hasRsvp
     ? `<a class="button" href="${escapeHtml(event.rsvpUrl)}" rel="noopener noreferrer">RSVP on Meetup</a>`
     : '<button class="button" type="button" disabled>RSVP link incoming</button>';
+  const detailsButton = event.detailsUrl
+    ? `<a class="button event-card__details-link" href="${escapeHtml(event.detailsUrl)}">${escapeHtml(event.detailsLabel || 'View event details')}</a>`
+    : '';
 
   eventCard.innerHTML = `
     <p class="event-card__status">${escapeHtml(event.status || 'Update pending')}</p>
@@ -63,7 +66,10 @@ function renderEvent(event) {
       ${eventDetail('Featured game', event.gameSystem)}
       ${eventDetail('Availability', event.availability)}
     </dl>
-    ${button}
+    <div class="event-card__actions">
+      ${detailsButton}
+      ${rsvpButton}
+    </div>
   `;
 }
 
