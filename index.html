@@ -8,37 +8,20 @@
   <link rel="icon" type="image/png" sizes="256x256" href="assets/images/branding/wasted-wargaming-favicon.png">
   <link rel="apple-touch-icon" href="assets/images/branding/wasted-wargaming-favicon.png">
   <title>Wasted Wargaming | New Players Welcome</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260731-event-gallery-polish">
-  <script src="assets/js/events-data.js?v=20260731-event-card-art" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260731-event-navigation">
+  <script src="assets/js/events-data.js?v=20260731-octarius" defer></script>
   <script src="assets/js/contributors-data.js" defer></script>
   <script src="assets/js/gallery-data.js?v=20260731-gallery-batch-2" defer></script>
-  <script src="assets/js/site.js?v=20260731-event-card-art" defer></script>
+  <script src="assets/js/navigation.js?v=20260731-shared-nav" defer></script>
+  <script src="assets/js/site.js?v=20260731-event-navigation" defer></script>
   <script src="assets/js/contributor-ui.js" defer></script>
   <script src="assets/js/home-gallery.js?v=20260731-featured-only" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to the action</a>
 
-  <header class="site-header" data-header>
-    <a class="wordmark" href="#top" aria-label="Wasted Wargaming home">
-      <span class="wordmark__window" aria-hidden="true">
-        <img src="assets/images/branding/wasted-wargaming-logo.png" alt="" width="1536" height="1024">
-      </span>
-    </a>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-      <span class="nav-toggle__label">Menu</span>
-      <span class="nav-toggle__mark" aria-hidden="true"></span>
-    </button>
-    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
-      <a href="#about">What we're building</a>
-      <a href="#events">Upcoming events</a>
-      <a href="#roles">Choose your path</a>
-      <a href="#how-it-works">How it works</a>
-      <a href="#partners">Partners</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="#faq">FAQ</a>
-      <a class="nav-recruit" href="commander.html">Become a commander</a>
-    </nav>
+  <header class="site-header" data-header data-site-navigation>
+    <noscript><a class="wordmark" href="#top">Wasted Wargaming home</a></noscript>
   </header>
 
   <main id="main">
@@ -131,9 +114,15 @@
           <p>Event details live here as soon as they’re confirmed. No mystery dates, surprise fees, or invented intel.</p>
           <p class="data-note"><span aria-hidden="true"></span> Status updates from our event file</p>
         </div>
-        <div class="event-card" data-event-card aria-live="polite">
-          <p class="event-card__status">Checking the signal…</p>
-          <h3>Loading upcoming event</h3>
+        <div class="event-dossier" data-event-dossier role="region" aria-roledescription="carousel" aria-label="Upcoming mission briefings">
+          <button class="event-dossier__arrow event-dossier__arrow--previous" type="button" data-event-previous aria-label="Show previous mission briefing" hidden><span aria-hidden="true">←</span></button>
+          <div class="event-dossier__stack" data-event-stack aria-live="polite">
+            <article class="event-card is-active" data-event-card>
+              <p class="event-card__status">Checking the signal…</p>
+              <h3>Loading upcoming event</h3>
+            </article>
+          </div>
+          <button class="event-dossier__arrow event-dossier__arrow--next" type="button" data-event-next aria-label="Show next mission briefing" hidden><span aria-hidden="true">→</span></button>
         </div>
       </div>
     </section>

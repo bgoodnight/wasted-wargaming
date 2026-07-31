@@ -19,7 +19,26 @@ window.WASTED_WARGAMING_EVENT_DATA = {
       availability: 'RSVP not yet open',
       rsvpUrl: 'TBD',
       detailsUrl: 'joint-ops.html',
-      detailsLabel: 'Read the mission briefing'
+      detailsLabel: 'Read the mission briefing',
+      artSrc: 'assets/images/events/tomb-world-joint-ops-v2.jpg',
+      theme: 'tomb-world'
+    },
+    {
+      id: 'war-for-octarius-planning',
+      status: 'Planning signal: mission not yet confirmed',
+      title: 'War for Octarius',
+      message: 'The sector is collapsing into an ever-widening war. Death Korps veterans enter a scrap-built settlement while Ork Kommandos stalk its gantries, oil pumps, and barricades.',
+      dateDisplay: 'To be announced',
+      gameSystem: 'Warhammer 40,000: Kill Team, Killzone Octarius',
+      formatDisplay: 'Cooperative or versus protocol under review',
+      materialsDisplay: 'Kill teams, Octarius terrain, dice, and rules',
+      audienceDisplay: 'Recruit event with Commander guidance',
+      availability: 'Planning file: event not yet confirmed',
+      rsvpUrl: 'TBD',
+      detailsLabel: 'Full briefing classified',
+      artSrc: 'assets/images/events/octarius-killzone.jpg',
+      theme: 'octarius',
+      classifiedFields: ['dateDisplay', 'formatDisplay']
     }
   ],
   fallback: {
