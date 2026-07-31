@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Community event photography and hand-painted miniatures from Wasted Wargaming in East Atlanta Village.">
+  <meta name="theme-color" content="#0b0810">
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/images/branding/wasted-wargaming-favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/branding/wasted-wargaming-favicon.png">
+  <title>Gallery | Wasted Wargaming</title>
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260731-event-gallery-polish">
+  <script src="assets/js/contributors-data.js" defer></script>
+  <script src="assets/js/gallery-data.js?v=20260731-gallery-featured" defer></script>
+  <script src="assets/js/site.js?v=20260731-event-card-art" defer></script>
+  <script src="assets/js/contributor-ui.js" defer></script>
+  <script src="assets/js/gallery.js?v=20260731-removable-tags" defer></script>
+</head>
+<body class="gallery-page">
+  <a class="skip-link" href="#gallery">Skip to the gallery</a>
+
+  <header class="site-header site-header--solid" data-header>
+    <a class="wordmark" href="index.html#top" aria-label="Wasted Wargaming home">
+      <span class="wordmark__window" aria-hidden="true">
+        <img src="assets/images/branding/wasted-wargaming-logo.png" alt="" width="1536" height="1024">
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span class="nav-toggle__label">Menu</span>
+      <span class="nav-toggle__mark" aria-hidden="true"></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+      <a href="index.html#about">What we're building</a>
+      <a href="index.html#roles">Choose your path</a>
+      <a href="index.html#how-it-works">How it works</a>
+      <a href="index.html#events">Next event</a>
+      <a href="index.html#partners">Partners</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="index.html#faq">FAQ</a>
+      <a class="nav-recruit" href="commander.html">Become a commander</a>
+    </nav>
+  </header>
+
+  <main id="gallery">
+    <section class="gallery-hero" aria-labelledby="gallery-title">
+      <div class="gallery-hero__image" data-gallery-hero-image aria-hidden="true"></div>
+      <div class="gallery-hero__wash" aria-hidden="true"></div>
+      <div class="shell gallery-hero__content">
+        <p class="eyebrow"><span>Field archive // open</span> Photos from the community</p>
+        <h1 id="gallery-title">From the<br><em>front lines.</em></h1>
+        <p>This archive is for photos from events and pictures of hand-painted miniatures submitted by members of the community.</p>
+        <a class="button button--primary" href="#archive">Open the archive</a>
+      </div>
+      <div class="gallery-hero__stamp" aria-hidden="true"><span>Wasted Wargaming</span><strong>Field archive</strong><small>EAV // ATL</small></div>
+    </section>
+
+    <section class="section gallery-archive" id="archive" aria-labelledby="archive-title">
+      <div class="shell">
+        <div class="gallery-archive__heading">
+          <div>
+            <div class="section-tag">Choose a channel</div>
+            <h2 id="archive-title">What do you<br>want to see?</h2>
+          </div>
+          <div>
+            <p>Filter the archive by the kind of image or the force on the table. More games and event photography will be added to the archive as Wasted Wargaming continues to host local events.</p>
+            <p class="gallery-count" data-gallery-count aria-live="polite"></p>
+          </div>
+        </div>
+
+        <div class="gallery-filter-panel">
+          <div class="gallery-filters gallery-filters--primary" role="group" aria-label="Filter gallery images">
+            <button type="button" data-gallery-filter="featured" data-filter-level="primary" aria-pressed="true">Featured</button>
+            <button type="button" data-gallery-filter="event-photos" data-filter-level="primary" aria-pressed="false">Event photos</button>
+            <button type="button" data-gallery-filter="minis" data-filter-level="primary" aria-pressed="false">Minis</button>
+            <button class="gallery-filter-clear" type="button" data-gallery-filter="all" data-filter-level="clear" aria-pressed="false" aria-label="Clear all gallery filters and show all photos">All <span aria-hidden="true">×</span></button>
+          </div>
+          <div class="gallery-subfilter-slot">
+            <div class="gallery-filters gallery-filters--secondary" role="group" aria-label="Filter miniature photos by faction" data-gallery-subfilters hidden>
+              <span>Miniatures // faction</span>
+              <button type="button" data-gallery-filter="death-guard" data-filter-level="secondary" aria-pressed="false">Death Guard</button>
+              <button type="button" data-gallery-filter="necrons" data-filter-level="secondary" aria-pressed="false">Necrons</button>
+            </div>
+          </div>
+        </div>
+
+        <section class="gallery-stage" data-gallery-stage aria-label="Featured gallery image">
+          <div class="gallery-stage__frame">
+            <button class="gallery-stage__image" type="button" data-feature-open>
+              <img class="is-active" data-feature-image src="assets/images/gallery/necrons-01.jpg" alt="" width="900" height="1600" aria-hidden="true">
+              <img data-feature-image src="assets/images/gallery/necrons-01.jpg" alt="" width="900" height="1600" aria-hidden="true">
+            </button>
+            <span class="gallery-stage__number" data-feature-number>Featured // 1 of 7</span>
+          </div>
+          <div class="gallery-stage__copy" aria-live="polite">
+            <div class="gallery-image-tags" data-feature-tags aria-label="Filter by photo tag"></div>
+            <div class="gallery-feature-credit" data-feature-credit></div>
+            <span>Select the image for a full-screen view.</span>
+            <div class="gallery-stage__controls">
+              <button type="button" data-gallery-previous aria-label="Previous gallery image"><span aria-hidden="true">←</span> Previous</button>
+              <button type="button" data-gallery-next aria-label="Next gallery image">Next <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </section>
+
+        <div class="gallery-empty" data-gallery-empty hidden>
+          <span aria-hidden="true">///</span>
+          <div>
+            <p>Field reports incoming</p>
+            <h3>The cameras are ready.</h3>
+            <p>There are no event photos in the archive yet. Once the first tables open, this channel will document the people, games, and moments that build the community.</p>
+          </div>
+        </div>
+
+        <div class="gallery-grid" data-gallery-grid aria-label="Gallery contact sheet"></div>
+      </div>
+    </section>
+
+    <section class="section gallery-callout" aria-labelledby="gallery-callout-title">
+      <div class="shell gallery-callout__inner">
+        <div>
+          <div class="section-tag">Next transmission</div>
+          <h2 id="gallery-callout-title">The next photos<br>could be yours.</h2>
+        </div>
+        <div>
+          <p>Come play, bring a painted favorite, or help welcome a new recruit. The archive is here to celebrate the hobby and the community gathering around it.</p>
+          <div class="gallery-callout__actions">
+            <a class="button button--primary" href="index.html#events">See the next event</a>
+            <a class="button button--ghost" href="index.html#roles">Choose your path</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="gallery-lightbox" data-gallery-lightbox aria-labelledby="lightbox-meta">
+    <div class="gallery-lightbox__bar">
+      <div>
+        <p id="lightbox-meta" data-lightbox-meta>Minis // Necrons</p>
+        <div class="gallery-image-tags gallery-image-tags--lightbox" data-lightbox-tags aria-label="Filter by photo tag"></div>
+        <div class="gallery-lightbox-credit" data-lightbox-credit></div>
+      </div>
+      <button type="button" data-lightbox-close aria-label="Close full-screen image">Close <span aria-hidden="true">×</span></button>
+    </div>
+    <div class="gallery-lightbox__image" data-lightbox-viewport tabindex="0" role="button" aria-pressed="false" aria-label="Zoom image to original resolution">
+      <img data-lightbox-image src="assets/images/gallery/necrons-01.jpg" alt="" width="900" height="1600">
+    </div>
+    <div class="gallery-lightbox__controls">
+      <button type="button" data-lightbox-previous><span aria-hidden="true">←</span> Previous</button>
+      <button type="button" data-lightbox-next>Next <span aria-hidden="true">→</span></button>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="shell site-footer__inner">
+      <div>
+        <a class="footer-logo" href="index.html#top" aria-label="Wasted Wargaming home">
+          <img src="assets/images/branding/wasted-wargaming-logo.png" alt="" width="1536" height="1024" loading="lazy">
+        </a>
+        <p>Beginner-friendly miniature wargaming in East Atlanta Village.</p>
+      </div>
+      <div class="site-footer__meta">
+        <p><a href="index.html">Return to the main briefing</a></p>
+        <p class="site-footer__legal">Warhammer, Warhammer 40,000, Kill Team, Combat Patrol, Warhammer Age of Sigmar, Spearhead, Warcry, and related names, marks, and intellectual property belong to Games Workshop. Wasted Wargaming is an independent community project and is not affiliated with or endorsed by Games Workshop. All illustrated event artwork created for Wasted Wargaming is original and unofficial; it does not reproduce official miniatures or faction artwork. Miniature photography depicts independently painted hobby models.</p>
+        <p>&copy; <span data-year></span> Owlbear Society LLC · Wasted Wargaming project.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
