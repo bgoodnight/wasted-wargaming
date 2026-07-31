@@ -3,11 +3,474 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wasted Wargaming</title>
+  <meta name="description" content="A low-pressure miniature-wargaming community in East Atlanta Village for new players, veterans, and volunteer teachers.">
+  <meta name="theme-color" content="#0b0810">
+  <title>Wasted Wargaming | New Players Welcome</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/site.js" defer></script>
 </head>
 <body>
-  <h1>Wasted Wargaming</h1>
-  <p>Beginner-friendly miniature wargaming in East Atlanta Village.</p>
-  <p>Full site coming soon.</p>
+  <a class="skip-link" href="#main">Skip to the action</a>
+
+  <header class="site-header" data-header>
+    <a class="wordmark" href="#top" aria-label="Wasted Wargaming home">
+      <span class="wordmark__window" aria-hidden="true">
+        <img src="assets/images/branding/wasted-wargaming-logo.png" alt="" width="1536" height="1024">
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span class="nav-toggle__label">Menu</span>
+      <span class="nav-toggle__mark" aria-hidden="true"></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
+      <a href="#roles">Choose your path</a>
+      <a href="#events">Next gathering</a>
+      <a href="#play">What we're building</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-recruit" href="#volunteer">Become a commander</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__backdrop" aria-hidden="true"></div>
+      <div class="hero__noise" aria-hidden="true"></div>
+      <div class="hero__content shell">
+        <div class="hero__copy">
+          <p class="eyebrow"><span>Transmission 001</span> East Atlanta Village</p>
+          <div class="recruit-stamp" aria-label="New players wanted">
+            <span>New players</span>
+            <strong>Wanted</strong>
+          </div>
+          <h1 id="hero-title">Meet at the bar.<br><em>Glory awaits.</em></h1>
+          <p class="hero__lede">Low-pressure miniature wargaming for brand-new recruits, longtime players, and the people ready to teach the next generation. Come share the hobby and find your table in East Atlanta Village.</p>
+          <ul class="signal-list" aria-label="What to expect">
+            <li>Materials provided</li>
+            <li>No experience required</li>
+            <li>All players welcome</li>
+          </ul>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#events">Get the briefing</a>
+            <a class="button button--ghost" href="#roles">Choose your path</a>
+          </div>
+        </div>
+
+        <div class="hero__identity" aria-label="Wasted Wargaming">
+          <div class="broadcast-label"><span>Community signal</span><span>ATL // EAV</span></div>
+          <div class="hero__logo-window">
+            <img src="assets/images/branding/wasted-wargaming-logo.png" alt="Wasted Wargaming" width="1536" height="1024">
+          </div>
+          <p>Learn together. Play together. Build the community.</p>
+        </div>
+      </div>
+
+      <div class="route-strip" aria-label="The Wasted Wargaming route">
+        <ol class="shell">
+          <li><span>01</span><strong>Joystick</strong><small>Meet at the bar</small></li>
+          <li><span>02</span><strong>Roll out</strong><small>Walk together</small></li>
+          <li><span>03</span><strong>Dice City</strong><small>Get equipped</small></li>
+          <li><span>04</span><strong>Join your game</strong><small>Your table is ready</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="briefing section shell" id="about" aria-labelledby="briefing-title">
+      <div class="section-tag">The real mission</div>
+      <div class="briefing__grid">
+        <div>
+          <h2 id="briefing-title">Find a table.<br><span>Keep EAV connected.</span></h2>
+        </div>
+        <div class="briefing__copy">
+          <p>Wasted Wargaming exists to support two spaces building a future in East Atlanta Village: <strong>Joystick Gamebar</strong> as it makes a new home in the neighborhood, and <strong>Dice City Games</strong>, the new tabletop project from East Atlanta Comics.</p>
+          <p>Third spaces—places that aren’t home or work, where people can return often enough to know and be known—are essential neighborhood infrastructure. They are also increasingly hard to find.</p>
+          <p>A tabletop game gives strangers a reason to sit down, share a problem, laugh, and become familiar faces. We love these games. We also believe in what happens around them: local friendships, stronger ties, and a neighborhood that feels a little less anonymous. That kind of belonging matters to both community life and public health.</p>
+        </div>
+      </div>
+      <div class="manifesto" aria-label="Our community mission">
+        <span>The games are the invitation</span>
+        <span>Community is the mission</span>
+        <span>Keep third spaces alive</span>
+      </div>
+    </section>
+
+    <section class="section pathways" id="roles" aria-labelledby="roles-title">
+      <div class="shell">
+        <div class="section-heading section-heading--tight">
+          <div>
+            <div class="section-tag">Choose how you join</div>
+            <h2 id="roles-title">Three ways in.<br><span>One community.</span></h2>
+          </div>
+          <p>These aren’t ranks you have to earn. They’re simply ways to find the experience you want—and you can move between them whenever you like.</p>
+        </div>
+
+        <div class="pathway-grid">
+          <article class="pathway-card pathway-card--recruit">
+            <div class="pathway-card__topline"><span>01</span><small>Learn</small></div>
+            <p class="pathway-card__rank">Recruit</p>
+            <h3>Start from zero.</h3>
+            <p>Curious about the hobby? We’ll supply the miniatures, explain the game, and pair you with someone patient. No purchase, preparation, or prior knowledge required.</p>
+            <div class="pathway-card__actions">
+              <a href="#recruits">Recruit briefing <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="pathway-card pathway-card--veteran">
+            <div class="pathway-card__topline"><span>02</span><small>Play</small></div>
+            <p class="pathway-card__rank">Veteran</p>
+            <h3>Find more good games.</h3>
+            <p>Already know the hobby? Meet local players, try other systems, join friendly matchups, and help make every table relaxed and welcoming.</p>
+            <div class="pathway-card__actions">
+              <a href="#play">Veteran path <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="pathway-card pathway-card--commander">
+            <div class="pathway-card__topline"><span>03</span><small>Teach</small></div>
+            <p class="pathway-card__rank">Commander</p>
+            <h3>Bring others with you.</h3>
+            <p>Commanders are our volunteer teachers: friendly players who can guide a first game, support an event, and help the community grow.</p>
+            <div class="pathway-card__actions">
+              <a href="#volunteer">Commander path <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+
+        <a class="pathway-event-link" href="#how-it-works">
+          <span>Ready to see the plan?</span>
+          <strong>See how Wednesday works <span aria-hidden="true">→</span></strong>
+        </a>
+      </div>
+    </section>
+
+    <section class="section recruit-brief" id="recruits" aria-labelledby="recruit-title">
+      <div class="shell">
+        <div class="recruit-brief__intro">
+          <div>
+            <div class="section-tag">For new recruits</div>
+            <h2 id="recruit-title">The hobby has enough barriers.<br><span>We’re taking some down.</span></h2>
+          </div>
+          <div class="recruit-brief__lead">
+            <p>From the outside, miniature wargaming can look like dense rulebooks, expensive armies, hours of assembly and painting, and no obvious way to find a first game.</p>
+            <p>It can also carry the stereotype of an intensely competitive room where everyone already knows more than you. <strong>We built this to defy that expectation.</strong></p>
+          </div>
+        </div>
+
+        <div class="recruit-promise">
+          <div class="recruit-promise__statement">
+            <p>Your first game is not an entrance exam.</p>
+            <h3>It should be fun.</h3>
+            <p>We create a judgment-free table where questions are expected, mistakes are useful, and competition can wait until you want it.</p>
+          </div>
+          <div class="recruit-proof">
+            <article>
+              <span>01</span>
+              <h3>Nothing to buy or paint</h3>
+              <p>Share our hand-painted miniatures and use the terrain, printed references, and materials already waiting at the table.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Learn cooperatively</h3>
+              <p>Play your first game alongside other recruits with a commander guiding the table. Learn together and face the game together.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Rules taught as you play</h3>
+              <p>No rulebook homework. We walk through each decision when it matters so you can focus on the story unfolding on the table.</p>
+            </article>
+            <article>
+              <span>04</span>
+              <h3>Your first dice are on us</h3>
+              <p>Every new recruit gets a free set of dice—a small piece of the hobby to take home and bring back for the next game.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="recruit-next">
+          <div>
+            <p class="recruit-next__label">Continue at your speed</p>
+            <h3>One game can lead anywhere.</h3>
+          </div>
+          <p>Come back for the beginner league, learn hobby skills in future painting classes, or work toward competitive tournaments. Keep it cooperative, get competitive, or simply enjoy an occasional game—the next step is yours.</p>
+          <a class="button" href="#how-it-works">See the event structure</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process" id="how-it-works" aria-labelledby="process-title">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <div class="section-tag">Every Wednesday</div>
+            <h2 id="process-title">Happy hour<br>to game night.</h2>
+          </div>
+          <p>Recruits, veterans, and commanders all start together at Joystick. We make the introductions, sort out the tables, and head to Dice City as one group.</p>
+        </div>
+
+        <ol class="process-list schedule-list">
+          <li>
+            <div class="process-list__number">01</div>
+            <div class="process-list__body">
+              <p class="process-list__location">6:00 PM · Joystick</p>
+              <h3>Happy hour</h3>
+              <p>Meet the community, ask questions, and grab a themed drink. The first specialty is the <strong>Warp Storm</strong>—a grimdark spin on a dark-and-stormy-style drink made with Joystick’s house-made ginger beer.</p>
+            </div>
+          </li>
+          <li>
+            <div class="process-list__number">02</div>
+            <div class="process-list__body">
+              <p class="process-list__location">At Joystick</p>
+              <h3>Get connected</h3>
+              <p>Pick up a Recruit, Veteran, or Commander badge so it’s easy to find the people who want to learn, play, or teach.</p>
+            </div>
+          </li>
+          <li>
+            <div class="process-list__number">03</div>
+            <div class="process-list__body">
+              <p class="process-list__location">7:00 PM · EAV</p>
+              <h3>Walk together</h3>
+              <p>We leave Joystick at 7:00 PM and make the short walk to Dice City together. No one has to arrive at an unfamiliar table alone.</p>
+            </div>
+          </li>
+          <li>
+            <div class="process-list__number">04</div>
+            <div class="process-list__body">
+              <p class="process-list__location">7:00–10:00 PM · Dice City</p>
+              <h3>Find your table</h3>
+              <p>Recruits join learning tables with commanders. Veterans connect for friendly 1v1 games. Play continues until Dice City closes at 10:00 PM.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="schedule-tracks" aria-label="Schedule guidance by participant type">
+          <article>
+            <p class="schedule-tracks__role">Recruit · Learn</p>
+            <h3>Your seat is ready.</h3>
+            <p>We’ll assign you to a learning table with a commander. Printed rule sheets, loaner armies, dice, terrain, and guidance are provided.</p>
+          </article>
+          <article>
+            <p class="schedule-tracks__role">Veteran · Play</p>
+            <h3>Bring an army.</h3>
+            <p>Come ready for a friendly pickup game. If you can, bring an extra loaner army. Coordinate a matchup ahead of time in the Dice City Discord.</p>
+            <a class="discord-link" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">
+              <img src="assets/icons/discord.svg" alt="" width="22" height="22"> Join the Dice City Discord
+            </a>
+          </article>
+          <article>
+            <p class="schedule-tracks__role">Commander · Teach</p>
+            <h3>Guide a first game.</h3>
+            <p>Meet your recruits at Joystick, then help lead a welcoming learning table at Dice City. Patience matters more than perfect rules recall.</p>
+          </article>
+        </div>
+
+        <div class="event-basics" aria-label="Wednesday event basics">
+          <div><small>Dice City table fee</small><strong>$10 to play</strong><span>Free play is Sundays; Wasted Wargaming adds no fee.</span></div>
+          <div><small>What to buy</small><strong>Nothing required</strong><span>No purchase is necessary to take part.</span></div>
+          <div><small>Age policy</small><strong>All ages</strong><span>We meet at 6:00 PM and leave Joystick at 7:00 PM, well before its 21+ policy begins at 9:00 PM.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section event-zone" id="events" aria-labelledby="events-title">
+      <div class="shell event-zone__grid">
+        <div class="event-zone__intro">
+          <div class="section-tag">Incoming transmission</div>
+          <h2 id="events-title">The next gathering</h2>
+          <p>Event details live here as soon as they’re confirmed. No mystery dates, surprise fees, or invented intel.</p>
+          <p class="data-note"><span aria-hidden="true"></span> Status updates from our event file</p>
+        </div>
+        <div class="event-card" data-event-card aria-live="polite">
+          <p class="event-card__status">Checking the signal…</p>
+          <h3>Loading next event</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="section kit" id="provided" aria-labelledby="kit-title">
+      <div class="shell">
+        <div class="section-heading section-heading--tight">
+          <div>
+            <div class="section-tag">Recruit kit</div>
+            <h2 id="kit-title">Show up empty-handed.</h2>
+          </div>
+          <p>New players will have what they need for a first game. No expensive shopping list, no required purchase, and no homework.</p>
+        </div>
+        <ul class="kit-grid">
+          <li><span aria-hidden="true">◆</span><strong>Miniatures</strong><small>Ready for the table</small></li>
+          <li><span aria-hidden="true">⬡</span><strong>Dice</strong><small>Enough to tempt fate</small></li>
+          <li><span aria-hidden="true">▥</span><strong>Terrain</strong><small>A world to fight over</small></li>
+          <li><span aria-hidden="true">⌁</span><strong>Rules guides</strong><small>The useful parts only</small></li>
+          <li><span aria-hidden="true">✦</span><strong>Patient teachers</strong><small>Questions encouraged</small></li>
+          <li><span aria-hidden="true">✓</span><strong>A seat at the table</strong><small>Newcomers belong here</small></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section game-feature" id="play" aria-labelledby="play-title">
+      <div class="game-feature__vista" aria-hidden="true"></div>
+      <div class="shell game-feature__content game-feature__content--roadmap">
+        <div class="game-feature__copy">
+          <div class="section-tag section-tag--light">What we’re building</div>
+          <p class="game-feature__kicker">Start by teaching. Grow by playing.</p>
+          <h2 id="play-title">Learn. Play.<br><span>Build together.</span></h2>
+          <p>We’re beginning with learn-to-play events that introduce as many people as possible to the hobby. Those nights help recruits learn, veterans connect, and future commanders step forward—giving us the people and experience to run more kinds of events.</p>
+          <p class="legal-note">Warhammer, Kill Team, Combat Patrol, Age of Sigmar, Spearhead, and related marks belong to their respective owners. Wasted Wargaming is an independent community event and is not affiliated with or endorsed by Games Workshop.</p>
+        </div>
+        <ol class="event-roadmap" aria-label="Planned event progression">
+          <li>
+            <span class="event-roadmap__phase">Now forming</span>
+            <h3>Learn together</h3>
+            <p>Teaching events begin with cooperative Kill Team: Joint Ops, with plans in development for Warhammer 40,000, Combat Patrol, Warhammer Age of Sigmar, and Spearhead.</p>
+          </li>
+          <li>
+            <span class="event-roadmap__phase">Planned next</span>
+            <h3>Friendly league play</h3>
+            <p>Beginner-friendly 1v1 pairings where new and veteran players can get games in together. No win-loss standings; participation, games played, and varied achievements can earn rewards.</p>
+          </li>
+          <li>
+            <span class="event-roadmap__phase">Future objective</span>
+            <h3>Competitive events</h3>
+            <p>Once the community has a strong foundation, we plan to host true competitive tournaments alongside our teaching and casual events.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section volunteer" id="volunteer" aria-labelledby="volunteer-title">
+      <div class="shell volunteer__grid">
+        <div class="volunteer__callout" aria-hidden="true">
+          <span>The commander path</span>
+          <strong>Make the table bigger.</strong>
+        </div>
+        <div class="volunteer__copy">
+          <div class="section-tag">For volunteer teachers</div>
+          <h2 id="volunteer-title">Help someone find<br>their first game.</h2>
+          <p>Commanders are experienced players who enjoy helping people feel at home. You don’t need encyclopedic rules knowledge—you need patience, encouragement, and a desire to make someone’s first game a good one.</p>
+          <p>Every teaching event helps us meet more potential commanders, open more tables, and welcome more people into the community.</p>
+          <button class="button button--primary" type="button" disabled title="Volunteer contact details are coming soon">Volunteer link incoming</button>
+          <p class="placeholder-note">Volunteer contact details are being confirmed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section partners" id="partners" aria-labelledby="partners-title">
+      <div class="shell">
+        <div class="section-heading section-heading--tight">
+          <div>
+            <div class="section-tag">Built in EAV</div>
+            <h2 id="partners-title">Two local spaces.<br>One growing community.</h2>
+          </div>
+          <p>With Joystick preparing a new East Atlanta Village location and the newly opened Dice City bringing more tabletop gaming to the neighborhood, this is the right moment to connect both communities.</p>
+        </div>
+        <div class="partner-grid">
+          <article class="partner-card partner-card--joystick">
+            <div class="partner-card__logo">
+              <img src="assets/images/partners/joystick-gamebar-logo.jpg" alt="Joystick Gamebar" width="1536" height="1024" loading="lazy">
+            </div>
+            <div class="partner-card__copy">
+              <p class="partner-card__role">Meet here first</p>
+              <h3>Joystick Gamebar</h3>
+              <p>Joystick is bringing its gamebar energy to a new East Atlanta Village location. It will be our relaxed starting point for drinks, introductions, and the beginning of the night.</p>
+              <div class="partner-card__links">
+                <a class="partner-card__link" href="https://www.joystickgamebar.com/" rel="noopener noreferrer">Visit Joystick</a>
+                <a class="partner-card__link" href="https://www.instagram.com/joystickgamebar/" rel="noopener noreferrer">Follow Joystick</a>
+              </div>
+            </div>
+          </article>
+          <article class="partner-card partner-card--dice-city">
+            <div class="partner-card__logo">
+              <img src="assets/images/partners/east-atlanta-comics-logo.png" alt="East Atlanta Comics, home of Dice City Games" width="1536" height="864" loading="lazy">
+            </div>
+            <div class="partner-card__copy">
+              <p class="partner-card__role">Play here together</p>
+              <h3>Dice City Games</h3>
+              <p>The newly opened tabletop-gaming project of East Atlanta Comics—and where our miniatures, terrain, and new connections hit the table.</p>
+              <div class="partner-card__links">
+                <a class="partner-card__link" href="https://www.eastatlantacomics.com/events/" rel="noopener noreferrer">View the EAC event calendar</a>
+                <a class="partner-card__link" href="https://www.instagram.com/dicecityeav/" rel="noopener noreferrer">Follow Dice City</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="shell faq__grid">
+        <div>
+          <div class="section-tag">Declassified answers</div>
+          <h2 id="faq-title">Questions are part of the hobby.</h2>
+          <p>If yours isn’t here, bring it with you. There is no entry exam.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Do I need to know how to play?</summary>
+            <p>No. The event is specifically built for people who have never played. We’ll explain what matters while you play.</p>
+          </details>
+          <details>
+            <summary>Do I need to bring or paint miniatures?</summary>
+            <p>Recruits do not need to bring anything—we provide printed rule sheets, loaner armies, dice, terrain, and instruction. Veterans looking for a pickup game should bring their army and, if possible, an extra loaner army.</p>
+          </details>
+          <details>
+            <summary>Is this a tournament?</summary>
+            <p>Our first events are relaxed learn-to-play gatherings, not tournaments. Friendly 1v1 league play is planned next, with true competitive tournaments intended for the future.</p>
+          </details>
+          <details>
+            <summary>Can I come alone?</summary>
+            <p>Absolutely. Meeting at Joystick first is designed to make arriving alone feel easy. We’ll introduce you to the group.</p>
+          </details>
+          <details>
+            <summary>How much does it cost?</summary>
+            <p>Dice City charges its normal $10 table fee on Wednesdays. Wasted Wargaming does not add another fee, and no purchase is required. Dice City offers free play on Sundays.</p>
+          </details>
+          <details>
+            <summary>Is there an age requirement?</summary>
+            <p>The event is all ages. Joystick becomes 21+ after 9:00 PM, but the Wasted Wargaming group leaves Joystick for Dice City at 7:00 PM.</p>
+          </details>
+          <details>
+            <summary>Can experienced players attend?</summary>
+            <p>Absolutely. Veterans can meet opponents, try new games, join friendly league play, or step into the commander role and teach. Beginner-friendly does not mean beginner-only.</p>
+          </details>
+          <details>
+            <summary>What if the event fills up?</summary>
+            <p>Tables at Dice City are always first come, first served. There are plenty of tables, so we’re unlikely to run out—but arriving with the group at 7:00 PM is the best way to claim a spot. You’re also welcome to join us for Happy Hour and observe the games for free; the $10 table fee only applies if you play.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section connect" id="connect" aria-labelledby="connect-title">
+      <div class="shell connect__inner">
+        <div>
+          <div class="section-tag section-tag--light">Stay connected</div>
+          <h2 id="connect-title">Find your next table.</h2>
+          <p>Learn-to-play nights, friendly matchups, league updates, and commander calls will all be shared here. Join the Dice City Discord now; our Meetup, Instagram, and contact links will appear as soon as they’re confirmed.</p>
+        </div>
+        <div class="connect__channels" aria-label="Community channels">
+          <span>Meetup <small>Pending</small></span>
+          <a class="channel-link channel-link--discord" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">
+            <img src="assets/icons/discord.svg" alt="" width="26" height="26">
+            <span>Dice City Discord <small>Join now</small></span>
+          </a>
+          <span>Instagram <small>Pending</small></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell site-footer__inner">
+      <div>
+        <div class="footer-logo" aria-label="Wasted Wargaming">
+          <img src="assets/images/branding/wasted-wargaming-logo.png" alt="" width="1536" height="1024" loading="lazy">
+        </div>
+        <p>Beginner-friendly miniature wargaming in East Atlanta Village.</p>
+      </div>
+      <div class="site-footer__meta">
+        <p>A community collaboration between Joystick Gamebar and Dice City Games.</p>
+        <p>Game names and trademarks belong to their respective owners. No official sponsorship or endorsement is implied.</p>
+        <p>&copy; <span data-year></span> Owlbear Society LLC · Wasted Wargaming project.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
