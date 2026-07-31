@@ -5,15 +5,15 @@ const factionGalleryItems = Array.isArray(window.WASTED_WARGAMING_GALLERY)
 
 factionGalleries.forEach((gallery) => {
   const faction = gallery.dataset.factionGallery;
-  const items = factionGalleryItems.filter((item) => item.tags.includes('minis') && item.tags.includes(faction));
-  const featuredItems = items.filter((item) => item.tags.includes('featured'));
+  const factionItems = factionGalleryItems.filter((item) => item.tags.includes('minis') && item.tags.includes(faction));
+  const featuredItems = factionItems.filter((item) => item.tags.includes('featured'));
+  const items = featuredItems.length ? featuredItems : factionItems;
   const image = gallery.querySelector('[data-faction-gallery-image]');
   const link = gallery.querySelector('[data-faction-gallery-link]');
   const next = gallery.querySelector('[data-faction-gallery-next]');
   if (!items.length || !image || !link || !next) return;
 
-  const initialPool = featuredItems.length ? featuredItems : items;
-  const initialItem = initialPool[Math.floor(Math.random() * initialPool.length)];
+  const initialItem = items[Math.floor(Math.random() * items.length)];
   let index = items.findIndex((item) => item.id === initialItem.id);
 
   function showItem() {

@@ -4,7 +4,7 @@ window.WASTED_WARGAMING_CONTRIBUTORS = {
     name: 'Bradley Goodnight',
     initials: 'BG',
     roles: ['Painter'],
-    bio: 'Bradley Goodnight is the painter behind every miniature currently featured in the Wasted Wargaming field archive. This profile collects his contributions and links to his work elsewhere.',
+    bio: 'Bradley Goodnight has been painting miniatures for several years. He plays Mordheim at Dice City on Sundays and joins their Paint & Sip on Tuesdays. An experienced Kill Team player, he is interested in playing more competitive games and connecting with more people in the local hobby community.',
     links: [
       {
         type: 'linkedin',

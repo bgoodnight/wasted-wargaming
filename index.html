@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="assets/css/styles.css?v=20260731-event-gallery-polish">
   <script src="assets/js/events-data.js?v=20260731-event-card-art" defer></script>
   <script src="assets/js/contributors-data.js" defer></script>
-  <script src="assets/js/gallery-data.js?v=20260731-gallery-featured" defer></script>
+  <script src="assets/js/gallery-data.js?v=20260731-gallery-batch-2" defer></script>
   <script src="assets/js/site.js?v=20260731-event-card-art" defer></script>
   <script src="assets/js/contributor-ui.js" defer></script>
-  <script src="assets/js/home-gallery.js?v=20260731-gallery-refresh" defer></script>
+  <script src="assets/js/home-gallery.js?v=20260731-featured-only" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to the action</a>
@@ -31,9 +31,9 @@
     </button>
     <nav class="site-nav" id="site-nav" aria-label="Primary navigation" data-nav>
       <a href="#about">What we're building</a>
+      <a href="#events">Upcoming events</a>
       <a href="#roles">Choose your path</a>
       <a href="#how-it-works">How it works</a>
-      <a href="#events">Next event</a>
       <a href="#partners">Partners</a>
       <a href="gallery.html">Gallery</a>
       <a href="#faq">FAQ</a>
@@ -60,7 +60,7 @@
             <li class="signal-list__link"><a href="#community-standards" aria-label="All players welcome. Read our community standards">All players welcome</a></li>
           </ul>
           <div class="hero__actions">
-            <a class="button button--primary" href="#events">Get the briefing</a>
+            <a class="button button--primary" href="#events">Upcoming missions</a>
             <a class="button button--ghost" href="#roles">Choose your path</a>
           </div>
         </div>
@@ -120,6 +120,21 @@
         <span>The games are the invitation</span>
         <span>Community is the mission</span>
         <span>Keep third spaces alive</span>
+      </div>
+    </section>
+
+    <section class="section event-zone" id="events" aria-labelledby="events-title">
+      <div class="shell event-zone__grid">
+        <div class="event-zone__intro">
+          <div class="section-tag">Incoming transmission</div>
+          <h2 id="events-title">Mission briefings</h2>
+          <p>Event details live here as soon as they’re confirmed. No mystery dates, surprise fees, or invented intel.</p>
+          <p class="data-note"><span aria-hidden="true"></span> Status updates from our event file</p>
+        </div>
+        <div class="event-card" data-event-card aria-live="polite">
+          <p class="event-card__status">Checking the signal…</p>
+          <h3>Loading upcoming event</h3>
+        </div>
       </div>
     </section>
 
@@ -322,21 +337,6 @@
           <div><small>Dice City table fee</small><strong>$10 to play</strong><span>Free play is Sundays; Wasted Wargaming adds no fee.</span></div>
           <div><small>What to buy</small><strong>Nothing required</strong><span>No purchase is necessary to take part.</span></div>
           <div><small>Age policy</small><strong>All ages</strong><span>We meet at 6:00 PM and leave Joystick at 7:00 PM, well before its 21+ policy begins at 9:00 PM.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section event-zone" id="events" aria-labelledby="events-title">
-      <div class="shell event-zone__grid">
-        <div class="event-zone__intro">
-          <div class="section-tag">Incoming transmission</div>
-          <h2 id="events-title">The next gathering</h2>
-          <p>Event details live here as soon as they’re confirmed. No mystery dates, surprise fees, or invented intel.</p>
-          <p class="data-note"><span aria-hidden="true"></span> Status updates from our event file</p>
-        </div>
-        <div class="event-card" data-event-card aria-live="polite">
-          <p class="event-card__status">Checking the signal…</p>
-          <h3>Loading next event</h3>
         </div>
       </div>
     </section>

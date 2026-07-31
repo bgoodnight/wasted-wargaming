@@ -1,6 +1,6 @@
 const homeGallery = document.querySelector('[data-home-gallery]');
 const homeGalleryItems = Array.isArray(window.WASTED_WARGAMING_GALLERY)
-  ? window.WASTED_WARGAMING_GALLERY
+  ? window.WASTED_WARGAMING_GALLERY.filter((item) => item.tags.includes('featured'))
   : [];
 
 if (homeGallery && homeGalleryItems.length) {

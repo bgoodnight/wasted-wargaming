@@ -51,6 +51,11 @@ function itemMeta(item) {
 }
 
 function formatTag(tag) {
+  const labels = {
+    'emperors-children': "Emperor's Children",
+    'warhammer-40000': 'Warhammer 40,000'
+  };
+  if (labels[tag]) return labels[tag];
   return tag
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -263,6 +268,9 @@ function applyFilter(filter, level) {
     activePrimaryFilters.delete('event-photos');
     activePrimaryFilters.add('minis');
     activeSecondaryFilter = filter;
+    const requestedTags = [...activePrimaryFilters, filter];
+    const hasMatchingPhotos = galleryItems.some((item) => requestedTags.every((tag) => item.tags.includes(tag)));
+    if (!hasMatchingPhotos) activePrimaryFilters.delete('featured');
   } else {
     if (filter === 'featured') {
       activePrimaryFilters.add(filter);

@@ -1,4 +1,5 @@
 // Photo credits can include multiple people and roles, such as Painter or Photographer.
+// Tags are layered: medium, faction, game system, and miniature type remain independent.
 window.WASTED_WARGAMING_GALLERY = [
   {
     id: 'necrons-01',
@@ -10,7 +11,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Necrons',
     homePosition: '50% 36%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'necrons']
+    tags: ['featured', 'minis', 'necrons', 'warhammer-40000', 'character']
   },
   {
     id: 'death-guard-01',
@@ -22,7 +23,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Death Guard',
     homePosition: '50% 45%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'death-guard']
+    tags: ['featured', 'minis', 'death-guard', 'plague-marines', 'kill-team', 'warhammer-40000', 'infantry']
   },
   {
     id: 'death-guard-02',
@@ -34,7 +35,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Death Guard',
     homePosition: '50% 38%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'death-guard']
+    tags: ['minis', 'death-guard', 'plague-marines', 'kill-team', 'warhammer-40000', 'infantry']
   },
   {
     id: 'death-guard-03',
@@ -46,7 +47,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Death Guard',
     homePosition: '50% 48%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'death-guard']
+    tags: ['featured', 'minis', 'death-guard', 'plague-marines', 'kill-team', 'warhammer-40000', 'infantry']
   },
   {
     id: 'death-guard-04',
@@ -58,7 +59,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Death Guard',
     homePosition: '50% 45%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'death-guard']
+    tags: ['featured', 'minis', 'death-guard', 'plague-marines', 'kill-team', 'warhammer-40000', 'infantry']
   },
   {
     id: 'death-guard-05',
@@ -70,7 +71,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Death Guard',
     homePosition: '50% 42%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'death-guard']
+    tags: ['featured', 'minis', 'death-guard', 'plague-marines', 'kill-team', 'warhammer-40000', 'infantry']
   },
   {
     id: 'death-guard-06',
@@ -82,6 +83,258 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Death Guard',
     homePosition: '50% 42%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'death-guard']
+    tags: ['minis', 'death-guard', 'plague-marines', 'kill-team', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'blooded-01',
+    src: 'assets/images/gallery/blooded-01.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Group of hand-painted Blooded infantry in dark armor with red cloth and improvised weapons.',
+    type: 'Minis',
+    faction: 'Blooded',
+    homePosition: '50% 48%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'blooded', 'kill-team', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'blooded-02',
+    src: 'assets/images/gallery/blooded-02.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Large hand-painted Blooded kill team in weathered armor with red, purple, and rusted details.',
+    type: 'Minis',
+    faction: 'Blooded',
+    homePosition: '50% 51%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'blooded', 'kill-team', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'mandrakes-01',
+    src: 'assets/images/gallery/mandrakes-01.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Mandrakes with pale hair, shadowed robes, and vivid green flames.',
+    type: 'Minis',
+    faction: 'Mandrakes',
+    homePosition: '52% 48%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'mandrakes', 'kill-team', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'death-guard-07',
+    src: 'assets/images/gallery/death-guard-07.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Death Guard infantry warrior in corroded green armor holding a multi-barreled firearm.',
+    type: 'Minis',
+    faction: 'Death Guard',
+    homePosition: '54% 46%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['featured', 'minis', 'death-guard', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'death-guard-08',
+    src: 'assets/images/gallery/death-guard-08.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Death Guard armored transport in weathered green with missiles and corroded details.',
+    type: 'Minis',
+    faction: 'Death Guard',
+    homePosition: '52% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'death-guard', 'warhammer-40000', 'vehicle', 'armored-transport']
+  },
+  {
+    id: 'death-guard-09',
+    src: 'assets/images/gallery/death-guard-09.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Death Guard daemon engine with a rounded green hull, claws, and heavy guns.',
+    type: 'Minis',
+    faction: 'Death Guard',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'death-guard', 'warhammer-40000', 'daemon-engine', 'vehicle']
+  },
+  {
+    id: 'death-guard-10',
+    src: 'assets/images/gallery/death-guard-10.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Death Guard walking daemon engine carrying large guns and mechanical limbs.',
+    type: 'Minis',
+    faction: 'Death Guard',
+    homePosition: '50% 48%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'death-guard', 'warhammer-40000', 'daemon-engine', 'vehicle']
+  },
+  {
+    id: 'death-guard-11',
+    src: 'assets/images/gallery/death-guard-11.jpg',
+    width: 1012,
+    height: 1800,
+    alt: 'Hand-painted Death Guard daemon prince in vivid green armor with horns and mechanical weapons.',
+    type: 'Minis',
+    faction: 'Death Guard',
+    homePosition: '50% 40%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'death-guard', 'warhammer-40000', 'character', 'monster']
+  },
+  {
+    id: 'necrons-02',
+    src: 'assets/images/gallery/necrons-02.jpg',
+    width: 1012,
+    height: 1800,
+    alt: 'Hand-painted Necron character in black and silver armor holding a glowing green weapon and staff.',
+    type: 'Minis',
+    faction: 'Necrons',
+    homePosition: '50% 39%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['featured', 'minis', 'necrons', 'warhammer-40000', 'character']
+  },
+  {
+    id: 'emperors-children-01',
+    src: 'assets/images/gallery/emperors-children-01.jpg',
+    width: 1012,
+    height: 1800,
+    alt: 'Hand-painted Emperor\'s Children infantry warrior with bright pink armor panels and a glowing green blade.',
+    type: 'Minis',
+    faction: 'Emperor\'s Children',
+    homePosition: '50% 40%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'emperors-children', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'necrons-04',
+    src: 'assets/images/gallery/necrons-04.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Necron commander surrounded by mechanical warriors and scarab constructs.',
+    type: 'Minis',
+    faction: 'Necrons',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['featured', 'minis', 'necrons', 'warhammer-40000', 'character', 'infantry']
+  },
+  {
+    id: 'necrons-05',
+    src: 'assets/images/gallery/necrons-05.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Group of hand-painted Necron infantry with black and silver bodies and glowing green weapons.',
+    type: 'Minis',
+    faction: 'Necrons',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'necrons', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'necrons-06',
+    src: 'assets/images/gallery/necrons-06.jpg',
+    width: 1012,
+    height: 1800,
+    alt: 'Tall hand-painted Necron construct with a skeletal metal body and glowing green blades.',
+    type: 'Minis',
+    faction: 'Necrons',
+    homePosition: '50% 37%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['featured', 'minis', 'necrons', 'warhammer-40000', 'construct']
+  },
+  {
+    id: 'necrons-07',
+    src: 'assets/images/gallery/necrons-07.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Close-up of a hand-painted Necron scarab swarm with glowing green eyes.',
+    type: 'Minis',
+    faction: 'Necrons',
+    homePosition: '50% 48%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['featured', 'minis', 'necrons', 'warhammer-40000', 'swarm']
+  },
+  {
+    id: 'necrons-08',
+    src: 'assets/images/gallery/necrons-08.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Two hand-painted Necron infantry warriors with black and silver armor and green weapons.',
+    type: 'Minis',
+    faction: 'Necrons',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'necrons', 'warhammer-40000', 'infantry']
+  },
+  {
+    id: 'soulblight-gravelords-01',
+    src: 'assets/images/gallery/soulblight-gravelords-01.jpg',
+    width: 1187,
+    height: 1800,
+    alt: 'Hand-painted Soulblight Gravelords warrior in dark armor with red cloth, sword, and tall polearm.',
+    type: 'Minis',
+    faction: 'Soulblight Gravelords',
+    homePosition: '50% 39%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'character']
+  },
+  {
+    id: 'soulblight-gravelords-02',
+    src: 'assets/images/gallery/soulblight-gravelords-02.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Soulblight Gravelords necromancer and undead attendants in purple and green.',
+    type: 'Minis',
+    faction: 'Soulblight Gravelords',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'character', 'infantry']
+  },
+  {
+    id: 'soulblight-gravelords-03',
+    src: 'assets/images/gallery/soulblight-gravelords-03.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Soulblight Gravelords vampire surrounded by undead attendants.',
+    type: 'Minis',
+    faction: 'Soulblight Gravelords',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'character', 'infantry']
+  },
+  {
+    id: 'soulblight-gravelords-04',
+    src: 'assets/images/gallery/soulblight-gravelords-04.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Hand-painted Soulblight Gravelords dire wolf with exposed ribs and a wounded red flank.',
+    type: 'Minis',
+    faction: 'Soulblight Gravelords',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'beast']
+  },
+  {
+    id: 'soulblight-gravelords-05',
+    src: 'assets/images/gallery/soulblight-gravelords-05.jpg',
+    width: 1625,
+    height: 1800,
+    alt: 'Hand-painted Soulblight Gravelords skeletal king in a crown, heavy armor, and red cloak.',
+    type: 'Minis',
+    faction: 'Soulblight Gravelords',
+    homePosition: '50% 39%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'character']
+  },
+  {
+    id: 'soulblight-gravelords-06',
+    src: 'assets/images/gallery/soulblight-gravelords-06.jpg',
+    width: 1800,
+    height: 1013,
+    alt: 'Group of hand-painted Soulblight Gravelords skeletal infantry carrying spears, shields, and a red banner.',
+    type: 'Minis',
+    faction: 'Soulblight Gravelords',
+    homePosition: '50% 50%',
+    credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
+    tags: ['minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'infantry']
   }
 ];
