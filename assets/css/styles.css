@@ -45,6 +45,8 @@ body::before {
 
 img { display: block; max-width: 100%; }
 a { color: inherit; }
+.inline-link { color: inherit; text-decoration-thickness: 0.1em; text-underline-offset: 0.16em; }
+.inline-link:hover { color: var(--cyan); }
 button, a { -webkit-tap-highlight-color: transparent; }
 
 :focus-visible {
@@ -636,6 +638,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .event-roadmap h3 { margin: 0.15rem 0 0.4rem; font-family: var(--display); font-size: 1.8rem; line-height: 1; text-transform: uppercase; }
 .event-roadmap p { margin: 0; color: #534d55; font-size: 0.86rem; line-height: 1.55; }
 .event-roadmap__link { display: inline-block; margin-top: 0.75rem; color: #7e075d; border-bottom: 1px solid currentColor; font-size: 0.66rem; font-weight: 900; letter-spacing: 0.07em; text-decoration: none; text-transform: uppercase; }
+.event-roadmap__link--discord { display: inline-flex; align-items: center; gap: 0.35rem; }
+.event-roadmap__link--discord img { flex: 0 0 auto; }
 
 .volunteer { background: var(--red); color: var(--ink); }
 .volunteer__grid { display: grid; gap: 2rem; }

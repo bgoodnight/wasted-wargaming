@@ -64,6 +64,9 @@ function renderEvent(event) {
       ${eventDetail('Game site', event.playLocation)}
       ${eventDetail('Cost', event.costDisplay)}
       ${eventDetail('Featured game', event.gameSystem)}
+      ${eventDetail('Format', event.formatDisplay)}
+      ${eventDetail('Provided', event.materialsDisplay)}
+      ${eventDetail('Ages', event.ageDisplay)}
       ${eventDetail('Availability', event.availability)}
     </dl>
     <div class="event-card__actions">
@@ -74,17 +77,12 @@ function renderEvent(event) {
 }
 
 if (eventCard) {
-  fetch('events.json', { cache: 'no-store' })
-    .then((response) => {
-      if (!response.ok) throw new Error('Event feed unavailable');
-      return response.json();
-    })
-    .then((data) => renderEvent(data.events?.[0] || data.fallback))
-    .catch(() => renderEvent({
-      status: 'Signal interrupted',
-      title: 'Next event announcement incoming',
-      message: 'We could not load the event feed. Check back soon for the complete briefing.',
-      dateDisplay: 'To be announced',
-      availability: 'Not yet open'
-    }));
+  const data = window.WASTED_WARGAMING_EVENT_DATA;
+  renderEvent(data?.events?.[0] || data?.fallback || {
+    status: 'Signal interrupted',
+    title: 'Next event announcement incoming',
+    message: 'We could not load the event details. Check back soon for the complete briefing.',
+    dateDisplay: 'To be announced',
+    availability: 'Not yet open'
+  });
 }
