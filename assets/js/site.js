@@ -42,6 +42,7 @@ const routeOpen = document.querySelector('[data-route-open]');
 const routeClose = document.querySelector('[data-route-close]');
 const routeMapViewport = document.querySelector('[data-route-map-viewport]');
 const routeMapCanvas = document.querySelector('[data-route-map-canvas]');
+const routeMapPlacesLayer = document.querySelector('.route-map__places');
 const routeMapPlaces = [...document.querySelectorAll('[data-route-map-place]')];
 const routeMapZoomIn = document.querySelector('[data-route-map-zoom-in]');
 const routeMapZoomOut = document.querySelector('[data-route-map-zoom-out]');
@@ -79,8 +80,33 @@ function constrainRouteMap() {
   routeMapY = Math.min(0, Math.max(height - scaledHeight, routeMapY));
 }
 
+function layoutRouteMapPlaces() {
+  if (!routeMapCanvas || !routeMapPlacesLayer) return;
+  const canvasWidth = routeMapCanvas.clientWidth;
+  const canvasHeight = routeMapCanvas.clientHeight;
+  const mapAspectRatio = 1120 / 650;
+  let width = canvasWidth;
+  let height = width / mapAspectRatio;
+  let left = 0;
+  let top = (canvasHeight - height) / 2;
+
+  if (height > canvasHeight) {
+    height = canvasHeight;
+    width = height * mapAspectRatio;
+    left = (canvasWidth - width) / 2;
+    top = 0;
+  }
+
+  routeMapPlacesLayer.style.inset = 'auto';
+  routeMapPlacesLayer.style.left = `${left}px`;
+  routeMapPlacesLayer.style.top = `${top}px`;
+  routeMapPlacesLayer.style.width = `${width}px`;
+  routeMapPlacesLayer.style.height = `${height}px`;
+}
+
 function renderRouteMap(announce = false) {
   if (!routeMapViewport || !routeMapCanvas) return;
+  layoutRouteMapPlaces();
   constrainRouteMap();
   routeMapCanvas.style.transform = `translate(${routeMapX}px, ${routeMapY}px) scale(${routeMapScale})`;
   routeMapViewport.classList.toggle('is-zoomed', routeMapScale > routeMapMinimumScale() + 0.01);

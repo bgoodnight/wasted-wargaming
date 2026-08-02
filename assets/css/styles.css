@@ -719,6 +719,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .route-dialog__map { pointer-events: none; }
 .route-dialog__map text { fill: #ff83d6; font: 900 15px var(--body); letter-spacing: 0.1em; }
 .route-dialog__map .route-map__street-label { fill: rgba(255,220,244,0.5); font-size: 19px; }
+.route-neighborhood__buildings path {
+  fill: rgba(208,137,190,0.055);
+  stroke: rgba(255,202,237,0.12);
+  stroke-width: 2;
+}
+.route-neighborhood__buildings .route-building--venue { fill: rgba(70,241,255,0.055); stroke: rgba(70,241,255,0.17); }
+.route-neighborhood__buildings .route-building--partner { fill: rgba(255,212,41,0.045); stroke: rgba(255,212,41,0.14); }
 .route-neighborhood__roads path { fill: none; stroke: rgba(255,132,215,0.18); stroke-linecap: round; }
 .route-road--metropolitan { stroke-width: 34; }
 .route-road--metropolitan-place { stroke-width: 27; }
@@ -734,13 +741,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   font-size: 14px;
   letter-spacing: 0.08em;
 }
-.route-neighborhood__labels .route-map__crossing-label,
-.route-neighborhood__labels .route-map__entrance-label {
-  fill: var(--cyan);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-}
-.route-neighborhood__labels .route-map__crossing-label { transform: rotate(39deg); transform-origin: 365px 367px; }
 .route-neighborhood__labels .route-map__cardinal { fill: rgba(255,255,255,0.62); font-size: 18px; text-anchor: middle; }
 .route-map__places { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
 .route-map__place {
@@ -765,7 +765,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .route-map__place:focus-visible,
 .route-map__place[aria-expanded="true"] { color: #fff; background: #1b0a19; border-color: var(--pink); outline: 0; }
 .route-map__place--core { color: #fff4fb; font-size: 0.8rem; }
-.route-map__place--partner { color: var(--yellow); }
+.route-map__place--joystick { color: var(--cyan); transform: translate(-0.55rem, -50%); }
+.route-map__place--dice { color: var(--yellow); }
+.route-map__place--partner { color: rgba(255,222,244,0.78); }
 .route-map__place > span {
   position: absolute;
   z-index: 8;
