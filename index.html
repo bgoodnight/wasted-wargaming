@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A low-pressure miniature-wargaming community in East Atlanta Village for new players, veterans, and volunteer teachers.">
+  <meta name="description" content="Beginner-friendly miniature wargaming launches in East Atlanta Village in Fall 2026. Join the Wasted Wargaming Meetup for mission updates.">
+  <meta property="og:title" content="Wasted Wargaming | New Players Welcome">
+  <meta property="og:description" content="Meet at the bar. Find your table. Wasted Wargaming launches in EAV in Fall 2026.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.wastedwargaming.com/">
   <meta name="theme-color" content="#0b0810">
   <link rel="icon" type="image/png" sizes="256x256" href="assets/images/branding/wasted-wargaming-favicon.png">
   <link rel="apple-touch-icon" href="assets/images/branding/wasted-wargaming-favicon.png">
   <title>Wasted Wargaming | New Players Welcome</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260731-path-pages">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260801-neighborhood-map">
   <script src="assets/js/events-data.js?v=20260731-octarius" defer></script>
   <script src="assets/js/contributors-data.js" defer></script>
-  <script src="assets/js/gallery-data.js?v=20260731-gallery-batch-2" defer></script>
+  <script src="assets/js/gallery-data.js?v=20260801-featured-gallery-2" defer></script>
   <script src="assets/js/navigation.js?v=20260731-path-pages" defer></script>
-  <script src="assets/js/site.js?v=20260731-event-page-sharing" defer></script>
+  <script src="assets/js/site.js?v=20260801-neighborhood-map" defer></script>
   <script src="assets/js/contributor-ui.js" defer></script>
   <script src="assets/js/home-gallery.js?v=20260731-featured-only" defer></script>
 </head>
@@ -31,6 +35,7 @@
       <div class="hero__content shell">
         <div class="hero__copy">
           <p class="eyebrow"><span>Transmission 001</span> East Atlanta Village</p>
+          <p class="launch-status">Launching Fall 2026</p>
           <div class="recruit-stamp" aria-label="New players wanted">
             <span>New players</span>
             <strong>Wanted</strong>
@@ -43,7 +48,7 @@
             <li class="signal-list__link"><a href="#community-standards" aria-label="All players welcome. Read our community standards">All players welcome</a></li>
           </ul>
           <div class="hero__actions">
-            <a class="button button--primary" href="#events">Upcoming missions</a>
+            <a class="button button--primary meetup-button" href="https://meetup.com/wastedwargaming" target="_blank" rel="noopener noreferrer"><img src="assets/icons/meetup.svg" alt="" width="22" height="22"> Join the Meetup</a>
             <a class="button button--ghost" href="#roles">Choose your path</a>
           </div>
         </div>
@@ -111,15 +116,15 @@
         <div class="event-zone__intro">
           <div class="section-tag">Incoming transmission</div>
           <h2 id="events-title">Mission briefings</h2>
-          <p>Event details live here as soon as they’re confirmed. No mystery dates, surprise fees, or invented intel.</p>
+          <p class="launch-copy">Wasted Wargaming launches when Joystick opens in EAV in Fall 2026. Follow the <a class="inline-link" href="https://meetup.com/wastedwargaming" target="_blank" rel="noopener noreferrer">Meetup</a> for dates, RSVP notices, and new mission briefings.</p>
           <p class="data-note"><span aria-hidden="true"></span> Status updates from our event file</p>
         </div>
         <div class="event-dossier" data-event-dossier role="region" aria-roledescription="carousel" aria-label="Upcoming mission briefings">
           <button class="event-dossier__arrow event-dossier__arrow--previous" type="button" data-event-previous aria-label="Show previous mission briefing" hidden><span aria-hidden="true">←</span></button>
           <div class="event-dossier__stack" data-event-stack aria-live="polite">
             <article class="event-card is-active" data-event-card>
-              <p class="event-card__status">Checking the signal…</p>
-              <h3>Loading upcoming event</h3>
+              <p class="event-card__status">Planned first deployment // Fall 2026</p>
+              <h3>Enter the Tomb</h3>
             </article>
           </div>
           <button class="event-dossier__arrow event-dossier__arrow--next" type="button" data-event-next aria-label="Show next mission briefing" hidden><span aria-hidden="true">→</span></button>
@@ -174,7 +179,7 @@
 
         <a class="pathway-event-link" href="#how-it-works">
           <span>Ready to see the plan?</span>
-          <strong>See how Wednesday works <span aria-hidden="true">→</span></strong>
+          <strong>See the planned launch format <span aria-hidden="true">→</span></strong>
         </a>
       </div>
     </section>
@@ -183,10 +188,15 @@
       <div class="shell">
         <div class="section-heading">
           <div>
-            <div class="section-tag">Every Wednesday</div>
+            <div class="section-tag">Planned game night</div>
             <h2 id="process-title">Happy hour<br>to game night.</h2>
           </div>
-          <p>Recruits, veterans, and commanders all start together at Joystick. We make the introductions, sort out the tables, and head to Dice City as one group.</p>
+          <p>Recruits, veterans, and commanders will start together at Joystick. We will make the introductions, sort out the tables, and head to Dice City as one group.</p>
+        </div>
+
+        <div class="provisional-notice" role="note" aria-label="Recurring event schedule is still being decided">
+          <span class="provisional-notice__stamp" aria-hidden="true">Field notice</span>
+          <div><strong><s>Wednesday</s> recurring deployment</strong><p>Final details for a regular event are still being decided. <a class="inline-link" href="https://meetup.com/wastedwargaming" target="_blank" rel="noopener noreferrer">Meetup</a> will carry the final schedule before the planned Fall 2026 launch.</p></div>
         </div>
 
         <ol class="process-list schedule-list">
@@ -211,7 +221,36 @@
             <div class="process-list__body">
               <p class="process-list__location">7:00 PM · EAV</p>
               <h3>Walk together</h3>
-              <p>We leave Joystick at 7:00 PM and make the short walk to Dice City together. No one has to arrive at an unfamiliar table alone.</p>
+              <button class="route-terminal" type="button" data-route-open aria-haspopup="dialog" aria-controls="route-dialog">
+                <span class="route-terminal__status">
+                  <span><i aria-hidden="true"></i> Rally route // online</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h13v13M21 3 10 14M16 21H3V8" /></svg>
+                  <span class="visually-hidden">Expand route map</span>
+                </span>
+                <span class="route-terminal__screen">
+                  <svg class="route-terminal__map" viewBox="0 0 360 180" role="img" aria-labelledby="route-preview-title route-preview-desc">
+                    <title id="route-preview-title">Walking route from Joystick to Dice City</title>
+                    <desc id="route-preview-desc">A schematic map showing a short route along Flat Shoals Avenue from Joystick at 485 to Dice City at 512.</desc>
+                    <path class="route-map__block" d="M-16 52 125 -12M39 202 376 36M238 202 376 134" />
+                    <path class="route-map__street" d="M-12 173 372 -18" />
+                    <path class="route-map__route-shadow" d="M82 126 276 30" />
+                    <path class="route-map__route" d="M82 126 276 30" />
+                    <g class="route-map__origin" transform="translate(82 126)">
+                      <circle r="8" />
+                      <circle class="route-map__ping" r="15" />
+                    </g>
+                    <g class="route-map__destination" transform="translate(276 30)">
+                      <circle class="route-map__beacon" r="9" />
+                      <circle class="route-map__radar" r="19" />
+                      <circle class="route-map__radar route-map__radar--late" r="31" />
+                    </g>
+                    <text x="55" y="155">JOYSTICK // 485</text>
+                    <text x="201" y="18">DICE CITY // 512</text>
+                    <text class="route-map__street-label" x="136" y="121" transform="rotate(-26 136 121)">FLAT SHOALS AVE</text>
+                  </svg>
+                  <span class="route-terminal__scan" aria-hidden="true"></span>
+                </span>
+              </button>
             </div>
           </li>
           <li>
@@ -224,17 +263,113 @@
           </li>
         </ol>
 
+        <dialog class="route-dialog" id="route-dialog" data-route-dialog aria-labelledby="route-dialog-title">
+          <div class="route-dialog__panel">
+            <button class="route-dialog__close" type="button" data-route-close aria-label="Close rally route">×</button>
+            <div class="route-dialog__heading">
+              <div>
+                <p class="route-dialog__eyebrow"><span aria-hidden="true"></span> Rally route // Flat Shoals Avenue</p>
+                <h2 id="route-dialog-title">Meet at the bar.<br>Move out together.</h2>
+              </div>
+              <p>The route from Joystick to Dice City stays on the same short stretch of Flat Shoals Avenue. East Atlanta Comics is right next door to the game space.</p>
+            </div>
+            <div class="route-dialog__map-wrap">
+              <svg class="route-dialog__map" viewBox="0 0 1000 650" preserveAspectRatio="none" role="img" aria-labelledby="route-full-title route-full-desc">
+                <title id="route-full-title">Rally route through East Atlanta Village</title>
+                <desc id="route-full-desc">A schematic neighborhood map showing the walking route from Joystick Gamebar to Dice City, nearby streets and businesses, and preliminary parking notes.</desc>
+                <g class="route-neighborhood__blocks" aria-hidden="true">
+                  <path d="M-40 96H1040M-40 284H1040M-40 472H1040M-40 590H1040" />
+                  <path d="M175-30V680M650-30V680M850-30V680" />
+                </g>
+                <g class="route-neighborhood__roads" aria-hidden="true">
+                  <path d="M-40 284H1040" />
+                  <path d="M650-30V680" />
+                  <path d="M318-30 815 680" />
+                  <path d="M180-30 500 284" />
+                  <path d="M-40 96H1040" />
+                </g>
+                <g class="route-neighborhood__route" aria-hidden="true">
+                  <path class="route-map__route-shadow route-map__route-shadow--wide" d="M420 117 608 386" />
+                  <path class="route-map__route route-map__route--wide" d="M420 117 608 386" />
+                </g>
+                <g class="route-map__origin" transform="translate(420 117)" aria-hidden="true">
+                  <circle r="12" />
+                  <circle class="route-map__ping" r="24" />
+                </g>
+                <g class="route-map__destination" transform="translate(608 386)" aria-hidden="true">
+                  <circle r="14" />
+                  <circle class="route-map__radar" r="31" />
+                  <circle class="route-map__radar route-map__radar--late" r="50" />
+                </g>
+                <g class="route-neighborhood__labels" aria-hidden="true">
+                  <text x="34" y="272">GLENWOOD AVE SE</text>
+                  <text x="673" y="176" transform="rotate(90 673 176)">HAAS AVE SE</text>
+                  <text x="41" y="83">METROPOLITAN AVE SE</text>
+                  <text x="236" y="43" transform="rotate(44 236 43)">METROPOLITAN PL SE</text>
+                  <text x="540" y="325" transform="rotate(55 540 325)">FLAT SHOALS AVE SE</text>
+                </g>
+              </svg>
+              <div class="route-landmarks" aria-label="Nearby places and parking notes">
+                <button class="route-landmark route-landmark--core route-landmark--joystick" style="--map-x:42%;--map-y:18%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">J</span><span class="route-landmark__tooltip"><strong>Joystick Gamebar</strong><small>485 Flat Shoals Ave SE · rally point</small></span>
+                </button>
+                <button class="route-landmark route-landmark--business" style="--map-x:36%;--map-y:13%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>Argosy</strong><small>470 Flat Shoals Ave SE</small></span>
+                </button>
+                <button class="route-landmark route-landmark--business" style="--map-x:46%;--map-y:25%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>The EARL</strong><small>488 Flat Shoals Ave SE</small></span>
+                </button>
+                <button class="route-landmark route-landmark--business" style="--map-x:39%;--map-y:43%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>Mary's</strong><small>1287 Glenwood Ave SE</small></span>
+                </button>
+                <button class="route-landmark route-landmark--parking" style="--map-x:35%;--map-y:51%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">P?</span><span class="route-landmark__tooltip"><strong>Lot behind Mary's</strong><small>Parking area identified. Event use is not yet confirmed.</small></span>
+                </button>
+                <button class="route-landmark route-landmark--warning" style="--map-x:69%;--map-y:37%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">!</span><span class="route-landmark__tooltip"><strong>Holy Taco lot</strong><small>Private lot. Do not use for Wasted Wargaming parking.</small></span>
+                </button>
+                <button class="route-landmark route-landmark--parking" style="--map-x:69%;--map-y:56%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">P?</span><span class="route-landmark__tooltip"><strong>Haas Ave street parking</strong><small>Street parking is often available. Follow all posted signs.</small></span>
+                </button>
+                <button class="route-landmark route-landmark--featured" style="--map-x:58%;--map-y:55%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">EAC</span><span class="route-landmark__tooltip"><strong>East Atlanta Comics</strong><small>508 Flat Shoals Ave SE · local partner</small></span>
+                </button>
+                <button class="route-landmark route-landmark--core route-landmark--dice" style="--map-x:61%;--map-y:60%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">D</span><span class="route-landmark__tooltip"><strong>Dice City</strong><small>512 Flat Shoals Ave SE, Suite #2 · game site</small></span>
+                </button>
+                <button class="route-landmark route-landmark--business" style="--map-x:64%;--map-y:66%;" type="button" data-route-landmark aria-expanded="false">
+                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>Flatiron</strong><small>520 Flat Shoals Ave SE</small></span>
+                </button>
+              </div>
+              <div class="route-map-legend" aria-hidden="true"><span><i class="is-route"></i> Walking route</span><span><i class="is-place"></i> Nearby place</span><span><i class="is-parking"></i> Parking note</span></div>
+              <span class="route-terminal__scan" aria-hidden="true"></span>
+            </div>
+            <div class="route-dialog__details">
+              <div><small>01 // Rally point</small><strong>Joystick Gamebar</strong><span>485 Flat Shoals Ave SE</span></div>
+              <div><small>02 // Partner</small><strong>East Atlanta Comics</strong><span>508 Flat Shoals Ave SE</span></div>
+              <div><small>03 // Game site</small><strong>Dice City</strong><span>512 Flat Shoals Ave SE, Suite #2</span></div>
+            </div>
+            <div class="route-dialog__actions">
+              <a class="button" href="https://www.google.com/maps/dir/?api=1&amp;origin=485+Flat+Shoals+Ave+SE%2C+Atlanta%2C+GA+30316&amp;destination=512+Flat+Shoals+Ave+SE%2C+Atlanta%2C+GA+30316&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Open walking directions <span aria-hidden="true">↗</span></a>
+              <p>Parking markers identify nearby possibilities, not approved event parking. Follow posted signs. Final parking, entrance, and accessibility guidance will be added after venue confirmation.</p>
+            </div>
+          </div>
+        </dialog>
+
         <div class="schedule-tracks" aria-label="Schedule guidance by participant type">
           <article>
             <p class="schedule-tracks__role">Recruit · Learn</p>
             <h3>Your seat is ready.</h3>
             <p>We’ll assign you to a learning table with a commander. Printed rule sheets, loaner armies, dice, terrain, and guidance are provided.</p>
+            <a class="track-link track-link--meetup" href="https://meetup.com/wastedwargaming" target="_blank" rel="noopener noreferrer">
+              <img src="assets/icons/meetup.svg" alt="" width="22" height="22"> Join the Meetup
+            </a>
           </article>
           <article>
             <p class="schedule-tracks__role">Veteran · Play</p>
             <h3>Bring an army.</h3>
             <p>Come ready for a friendly pickup game. If you can, bring an extra loaner army. Coordinate a matchup ahead of time in the <a class="inline-link" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">East Atlanta Comics / Dice City Discord</a>.</p>
-            <a class="discord-link" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">
+            <a class="discord-link track-link" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">
               <img src="assets/icons/discord.svg" alt="" width="22" height="22"> Join the Dice City Discord
             </a>
           </article>
@@ -242,10 +377,11 @@
             <p class="schedule-tracks__role">Commander · Teach</p>
             <h3>Guide a first game.</h3>
             <p>Meet your recruits at Joystick, then help lead a welcoming learning table at Dice City. Patience matters more than perfect rules recall.</p>
+            <a class="track-link track-link--commander" href="commander.html#application">Apply to volunteer <span aria-hidden="true">→</span></a>
           </article>
         </div>
 
-        <div class="event-basics" aria-label="Wednesday event basics">
+        <div class="event-basics" aria-label="Planned game night basics">
           <div><small>Dice City table fee</small><strong>$10 to play</strong><span>Free play is Sundays; Wasted Wargaming adds no fee.</span></div>
           <div><small>What to buy</small><strong>Nothing required</strong><span>No purchase is necessary to take part.</span></div>
           <div><small>Age policy</small><strong>All ages</strong><span>We meet at 6:00 PM and leave Joystick at 7:00 PM, well before its 21+ policy begins at 9:00 PM.</span></div>
@@ -327,7 +463,7 @@
           </details>
           <details>
             <summary>How much does it cost?</summary>
-            <p>Dice City charges its normal $10 table fee on Wednesdays. Wasted Wargaming does not add another fee, and no purchase is required. Dice City offers free play on Sundays.</p>
+            <p>Dice City charges its normal $10 table fee on the planned game night. Wasted Wargaming does not add another fee, and no purchase is required. Dice City offers free play on Sundays. The recurring weekday will be announced through Meetup.</p>
           </details>
           <details>
             <summary>Is there an age requirement?</summary>
@@ -350,15 +486,21 @@
         <div>
           <div class="section-tag section-tag--light">Stay connected</div>
           <h2 id="connect-title">Find your next table.</h2>
-          <p>Learn-to-play nights, friendly matchups, league updates, and commander calls will all be shared here. Join the <a class="inline-link" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">East Atlanta Comics / Dice City Discord</a> now; our Meetup, Instagram, and contact links will appear as soon as they’re confirmed.</p>
+          <p>Learn-to-play nights, friendly matchups, league updates, and Commander calls will be announced through <a class="inline-link" href="https://meetup.com/wastedwargaming" target="_blank" rel="noopener noreferrer">the Wasted Wargaming Meetup</a>. Join the <a class="inline-link" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">East Atlanta Comics / Dice City Discord</a> for conversation and day-to-day coordination.</p>
         </div>
         <div class="connect__channels" aria-label="Community channels">
-          <span>Meetup <small>Pending</small></span>
+          <a class="channel-link channel-link--meetup" href="https://meetup.com/wastedwargaming" target="_blank" rel="noopener noreferrer">
+            <img src="assets/icons/meetup.svg" alt="" width="26" height="26">
+            <span>Meetup <small>Join the community</small></span>
+          </a>
           <a class="channel-link channel-link--discord" href="https://discord.gg/Nm3C2hq24Y" rel="noopener noreferrer">
             <img src="assets/icons/discord.svg" alt="" width="26" height="26">
             <span>Dice City Discord <small>Join now</small></span>
           </a>
-          <span>Instagram <small>Pending</small></span>
+          <span class="channel-link channel-link--pending">
+            <img src="assets/icons/instagram.svg" alt="" width="26" height="26">
+            <span>Instagram <small>Pending</small></span>
+          </span>
         </div>
       </div>
     </section>

@@ -251,7 +251,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Necrons',
     homePosition: '50% 48%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['featured', 'minis', 'necrons', 'warhammer-40000', 'swarm']
+    tags: ['minis', 'necrons', 'warhammer-40000', 'swarm']
   },
   {
     id: 'necrons-08',
@@ -323,7 +323,7 @@ window.WASTED_WARGAMING_GALLERY = [
     faction: 'Soulblight Gravelords',
     homePosition: '50% 39%',
     credits: [{ contributorId: 'bradley-goodnight', role: 'Painted' }],
-    tags: ['minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'character']
+    tags: ['featured', 'minis', 'soulblight-gravelords', 'warhammer-age-of-sigmar', 'character']
   },
   {
     id: 'soulblight-gravelords-06',

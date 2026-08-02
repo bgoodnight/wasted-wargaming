@@ -37,6 +37,54 @@ function revealHashDetails() {
 window.addEventListener('hashchange', revealHashDetails);
 revealHashDetails();
 
+const routeDialog = document.querySelector('[data-route-dialog]');
+const routeOpen = document.querySelector('[data-route-open]');
+const routeClose = document.querySelector('[data-route-close]');
+const routeLandmarks = [...document.querySelectorAll('[data-route-landmark]')];
+
+function closeRouteLandmarks(exception) {
+  routeLandmarks.forEach((landmark) => {
+    if (landmark === exception) return;
+    landmark.classList.remove('is-active');
+    landmark.setAttribute('aria-expanded', 'false');
+  });
+}
+
+if (routeDialog && routeOpen) {
+  routeOpen.addEventListener('click', () => routeDialog.showModal());
+  routeClose?.addEventListener('click', () => routeDialog.close());
+  routeDialog.addEventListener('click', (event) => {
+    if (event.target === routeDialog) {
+      routeDialog.close();
+      return;
+    }
+    if (!event.target.closest('[data-route-landmark]')) closeRouteLandmarks();
+  });
+  routeDialog.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    routeDialog.close();
+  });
+  routeDialog.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      routeDialog.close();
+    }
+  });
+  routeDialog.addEventListener('close', () => {
+    closeRouteLandmarks();
+    routeOpen.focus();
+  });
+
+  routeLandmarks.forEach((landmark) => {
+    landmark.addEventListener('click', () => {
+      const willOpen = !landmark.classList.contains('is-active');
+      closeRouteLandmarks(landmark);
+      landmark.classList.toggle('is-active', willOpen);
+      landmark.setAttribute('aria-expanded', String(willOpen));
+    });
+  });
+}
+
 const backToTop = document.createElement('button');
 backToTop.className = 'back-to-top';
 backToTop.type = 'button';
@@ -115,7 +163,7 @@ function eventDetail(label, value, field, event) {
       <dt>${escapeHtml(label)}</dt>
       <dd>
         <span class="event-card__detail-value">${escapeHtml(value)}</span>
-        ${isClassified ? '<small>Declassification pending investigation by the Holy Orders of the Emperor\'s Inquisition</small>' : ''}
+        ${isClassified ? `<small>${escapeHtml(event.classifiedNote || 'This detail is still under review. Follow the Meetup for the final notice.')}</small>` : ''}
       </dd>
     </div>
   `;
@@ -273,13 +321,16 @@ if (shareDialog) {
 function renderEventCard(event, index, total) {
   const hasRsvp = Boolean(event.rsvpUrl && event.rsvpUrl !== 'TBD');
   const rsvpButton = hasRsvp
-    ? `<a class="button" href="${escapeHtml(event.rsvpUrl)}" rel="noopener noreferrer" data-event-card-action>RSVP on Meetup</a>`
+    ? `<a class="button meetup-button" href="${escapeHtml(event.rsvpUrl)}" target="_blank" rel="noopener noreferrer" data-event-card-action><img src="assets/icons/meetup.svg" alt="" width="22" height="22"> ${escapeHtml(event.rsvpLabel || 'Join the Meetup')}</a>`
     : '<button class="button" type="button" disabled data-event-card-action>RSVP link incoming</button>';
   const detailsButton = event.detailsUrl
     ? `<a class="button event-card__details-link" href="${escapeHtml(event.detailsUrl)}" data-event-card-action>${escapeHtml(event.detailsLabel || 'View event details')}</a>`
     : `<button class="button event-card__details-link" type="button" disabled data-event-card-action>${escapeHtml(event.detailsLabel || 'Full briefing classified')}</button>`;
   const card = document.createElement('article');
   const hasClassifiedFields = Boolean(event.classifiedFields?.length);
+  const classifiedStamps = event.classifiedStamps?.length
+    ? event.classifiedStamps
+    : [{ label: 'Field notice', value: 'Details pending', modifier: 'redacted' }];
   card.className = `event-card event-card--${escapeHtml(event.theme || 'default')}`;
   card.dataset.eventCard = event.id;
   card.setAttribute('role', 'group');
@@ -287,11 +338,9 @@ function renderEventCard(event, index, total) {
   card.setAttribute('aria-label', `${index + 1} of ${total}: ${event.title}`);
   card.innerHTML = `
     <span class="event-card__mission-count">Mission ${index + 1} of ${total}</span>
-    ${hasClassifiedFields ? `
-      <div class="event-card__classified-stamp event-card__classified-stamp--redacted" aria-hidden="true"><span>=][= Ordo Xenos</span><strong>Redacted</strong></div>
-      <div class="event-card__classified-stamp event-card__classified-stamp--confidential" aria-hidden="true"><span>=][= Ordo Xenos</span><strong>Confidential</strong></div>
-      <div class="event-card__classified-stamp event-card__classified-stamp--heretical" aria-hidden="true"><span>=][= Ordo Xenos</span><strong>Heretical</strong></div>
-    ` : ''}
+    ${hasClassifiedFields ? classifiedStamps.map((stamp) => `
+      <div class="event-card__classified-stamp event-card__classified-stamp--${escapeHtml(stamp.modifier || 'redacted')}" aria-hidden="true"><span>${escapeHtml(stamp.label)}</span><strong>${escapeHtml(stamp.value)}</strong></div>
+    `).join('') : ''}
     <p class="event-card__status">${escapeHtml(event.status || 'Update pending')}</p>
     <div class="event-card__art">
       ${event.artSrc ? `<img src="${escapeHtml(event.artSrc)}" alt="">` : ''}
