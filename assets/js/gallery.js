@@ -7,10 +7,7 @@ const galleryStage = document.querySelector('[data-gallery-stage]');
 const galleryEmpty = document.querySelector('[data-gallery-empty]');
 const galleryCount = document.querySelector('[data-gallery-count]');
 const galleryHeroImage = document.querySelector('[data-gallery-hero-image]');
-const filterButtons = [...document.querySelectorAll('[data-gallery-filter]')];
-const primaryFilterButtons = filterButtons.filter((button) => button.dataset.filterLevel === 'primary');
-const secondaryFilterButtons = filterButtons.filter((button) => button.dataset.filterLevel === 'secondary');
-const clearFilterButton = filterButtons.find((button) => button.dataset.filterLevel === 'clear');
+const galleryPrimaryFilters = document.querySelector('[data-gallery-primary-filters]');
 const gallerySubfilters = document.querySelector('[data-gallery-subfilters]');
 const featureImages = [...document.querySelectorAll('[data-feature-image]')];
 const featureTags = document.querySelector('[data-feature-tags]');
@@ -28,6 +25,12 @@ const lightboxCredit = document.querySelector('[data-lightbox-credit]');
 const lightboxClose = document.querySelector('[data-lightbox-close]');
 const lightboxPrevious = document.querySelector('[data-lightbox-previous]');
 const lightboxNext = document.querySelector('[data-lightbox-next]');
+
+let taxonomyTags = new Map();
+let filterButtons = [];
+let primaryFilterButtons = [];
+let secondaryFilterButtons = [];
+let clearFilterButton = null;
 
 const activePrimaryFilters = new Set(['featured']);
 let activeSecondaryFilter = null;
@@ -51,15 +54,89 @@ function itemMeta(item) {
 }
 
 function formatTag(tag) {
-  const labels = {
-    'emperors-children': "Emperor's Children",
-    'warhammer-40000': 'Warhammer 40,000'
-  };
-  if (labels[tag]) return labels[tag];
+  const taxonomyLabel = taxonomyTags.get(tag)?.label;
+  if (taxonomyLabel) return taxonomyLabel;
   return tag
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
+}
+
+function createFilterButton(tag, level) {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.dataset.galleryFilter = tag.id;
+  button.dataset.filterLevel = level;
+  button.setAttribute('aria-pressed', String(level === 'primary' && tag.id === 'featured'));
+  button.textContent = tag.label || formatTag(tag.id);
+  return button;
+}
+
+function refreshFilterButtonReferences() {
+  filterButtons = [...document.querySelectorAll('[data-gallery-filter]')];
+  primaryFilterButtons = filterButtons.filter((button) => button.dataset.filterLevel === 'primary');
+  secondaryFilterButtons = filterButtons.filter((button) => button.dataset.filterLevel === 'secondary');
+  clearFilterButton = filterButtons.find((button) => button.dataset.filterLevel === 'clear') || null;
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => applyFilter(button.dataset.galleryFilter, button.dataset.filterLevel));
+  });
+}
+
+function buildGalleryFilters(taxonomy) {
+  taxonomyTags = new Map((taxonomy?.tags || []).map((tag) => [tag.id, tag]));
+  const representedTags = new Set(galleryItems.flatMap((item) => item.tags || []));
+  const enabledTags = [...taxonomyTags.values()]
+    .filter((tag) => tag.status === 'active' && tag.filter?.enabled)
+    .sort((left, right) => (left.filter.order || 0) - (right.filter.order || 0));
+
+  const primaryTags = enabledTags.filter((tag) => tag.filter.group === 'primary');
+  const factionTags = enabledTags.filter((tag) => tag.facet === 'faction' && representedTags.has(tag.id));
+
+  if (!primaryTags.length) {
+    ['featured', 'event-photos', 'minis'].forEach((id, order) => primaryTags.push({ id, label: formatTag(id), filter: { order } }));
+  }
+
+  const primaryButtons = primaryTags.map((tag) => createFilterButton(tag, 'primary'));
+  const clearButton = document.createElement('button');
+  clearButton.className = 'gallery-filter-clear';
+  clearButton.type = 'button';
+  clearButton.dataset.galleryFilter = 'all';
+  clearButton.dataset.filterLevel = 'clear';
+  clearButton.setAttribute('aria-pressed', 'false');
+  clearButton.setAttribute('aria-label', 'Clear all gallery filters and show all photos');
+  clearButton.append('All ');
+  const clearMark = document.createElement('span');
+  clearMark.setAttribute('aria-hidden', 'true');
+  clearMark.textContent = '×';
+  clearButton.append(clearMark);
+  galleryPrimaryFilters?.replaceChildren(...primaryButtons, clearButton);
+
+  const subfilterLabel = gallerySubfilters?.querySelector('span');
+  const factionButtons = factionTags.map((tag) => createFilterButton(tag, 'secondary'));
+  gallerySubfilters?.replaceChildren(...(subfilterLabel ? [subfilterLabel] : []), ...factionButtons);
+  refreshFilterButtonReferences();
+}
+
+async function loadGalleryTaxonomy() {
+  try {
+    const response = await fetch('assets/data/gallery-taxonomy.json');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const taxonomy = await response.json();
+    if (!Array.isArray(taxonomy.tags)) throw new Error('Missing tags array');
+    return taxonomy;
+  } catch (error) {
+    console.warn('Gallery taxonomy could not be loaded; using readable fallback filters and labels.', error);
+    const representedFactions = [...new Set(galleryItems.map((item) => {
+      const factionId = item.faction?.toLowerCase().replaceAll("'", '').replaceAll(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      return item.tags?.find((tag) => tag === factionId);
+    }).filter(Boolean))];
+    return {
+      tags: [
+        ...['featured', 'event-photos', 'minis'].map((id, order) => ({ id, label: formatTag(id), facet: id === 'featured' ? 'editorial' : 'content-type', status: 'active', filter: { enabled: true, group: 'primary', order } })),
+        ...representedFactions.map((id, order) => ({ id, label: formatTag(id), facet: 'faction', status: 'active', filter: { enabled: true, group: 'faction', order } }))
+      ]
+    };
+  }
 }
 
 function activeChannelLabel() {
@@ -341,10 +418,6 @@ function openLightbox(index) {
   window.requestAnimationFrame(fitLightboxImage);
 }
 
-filterButtons.forEach((button) => {
-  button.addEventListener('click', () => applyFilter(button.dataset.galleryFilter, button.dataset.filterLevel));
-});
-
 function applyImageTag(event) {
   const button = event.target.closest('[data-image-tag]');
   if (!button) return;
@@ -457,9 +530,14 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'ArrowRight') updateFeature(featuredIndex + 1);
 });
 
-selectFeaturedHero();
-renderGrid();
+async function initializeGallery() {
+  buildGalleryFilters(await loadGalleryTaxonomy());
+  selectFeaturedHero();
+  renderGrid();
 
-const requestedPhotoId = new URLSearchParams(window.location.search).get('photo');
-const requestedPhotoIndex = filteredItems.findIndex((item) => item.id === requestedPhotoId);
-if (requestedPhotoIndex >= 0) updateFeature(requestedPhotoIndex);
+  const requestedPhotoId = new URLSearchParams(window.location.search).get('photo');
+  const requestedPhotoIndex = filteredItems.findIndex((item) => item.id === requestedPhotoId);
+  if (requestedPhotoIndex >= 0) updateFeature(requestedPhotoIndex);
+}
+
+initializeGallery();

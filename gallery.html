@@ -14,7 +14,7 @@
   <script src="assets/js/navigation.js?v=20260731-shared-nav" defer></script>
   <script src="assets/js/site.js?v=20260731-event-card-art" defer></script>
   <script src="assets/js/contributor-ui.js" defer></script>
-  <script src="assets/js/gallery.js?v=20260731-gallery-batch-3" defer></script>
+  <script src="assets/js/gallery.js?v=20260802-gallery-taxonomy" defer></script>
 </head>
 <body class="gallery-page">
   <a class="skip-link" href="#gallery">Skip to the gallery</a>
@@ -50,21 +50,11 @@
         </div>
 
         <div class="gallery-filter-panel">
-          <div class="gallery-filters gallery-filters--primary" role="group" aria-label="Filter gallery images">
-            <button type="button" data-gallery-filter="featured" data-filter-level="primary" aria-pressed="true">Featured</button>
-            <button type="button" data-gallery-filter="event-photos" data-filter-level="primary" aria-pressed="false">Event photos</button>
-            <button type="button" data-gallery-filter="minis" data-filter-level="primary" aria-pressed="false">Minis</button>
-            <button class="gallery-filter-clear" type="button" data-gallery-filter="all" data-filter-level="clear" aria-pressed="false" aria-label="Clear all gallery filters and show all photos">All <span aria-hidden="true">×</span></button>
+          <div class="gallery-filters gallery-filters--primary" role="group" aria-label="Filter gallery images" data-gallery-primary-filters>
           </div>
           <div class="gallery-subfilter-slot">
             <div class="gallery-filters gallery-filters--secondary" role="group" aria-label="Filter miniature photos by faction" data-gallery-subfilters hidden>
               <span>Miniatures // faction</span>
-              <button type="button" data-gallery-filter="death-guard" data-filter-level="secondary" aria-pressed="false">Death Guard</button>
-              <button type="button" data-gallery-filter="necrons" data-filter-level="secondary" aria-pressed="false">Necrons</button>
-              <button type="button" data-gallery-filter="emperors-children" data-filter-level="secondary" aria-pressed="false">Emperor's Children</button>
-              <button type="button" data-gallery-filter="blooded" data-filter-level="secondary" aria-pressed="false">Blooded</button>
-              <button type="button" data-gallery-filter="mandrakes" data-filter-level="secondary" aria-pressed="false">Mandrakes</button>
-              <button type="button" data-gallery-filter="soulblight-gravelords" data-filter-level="secondary" aria-pressed="false">Soulblight Gravelords</button>
             </div>
           </div>
         </div>

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "facets": [
+    { "id": "content-type", "label": "Content type", "description": "The broad kind of gallery image.", "order": 10 },
+    { "id": "game-system", "label": "Game system", "description": "The game or setting visibly represented.", "order": 20 },
+    { "id": "faction", "label": "Faction", "description": "The represented army, warband, team, or faction.", "order": 30 },
+    { "id": "subject", "label": "Subject", "description": "The primary physical or narrative subject.", "order": 40 },
+    { "id": "context", "label": "Context", "description": "How or where the subject is being presented.", "order": 50 },
+    { "id": "editorial", "label": "Editorial", "description": "Internal display and curation designations.", "order": 60 }
+  ],
+  "tags": [
+    { "id": "featured", "label": "Featured", "facet": "editorial", "description": "Selected for the default curated gallery channel.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": true, "group": "primary", "order": 10 } },
+    { "id": "event-photos", "label": "Event photos", "facet": "content-type", "description": "Photographs documenting Wasted Wargaming events and their participants.", "broader": [], "aliases": ["event-photography"], "status": "active", "filter": { "enabled": true, "group": "primary", "order": 20 } },
+    { "id": "minis", "label": "Minis", "facet": "content-type", "description": "Photographs primarily showing painted miniatures.", "broader": [], "aliases": ["miniatures"], "status": "active", "filter": { "enabled": true, "group": "primary", "order": 30 } },
+    { "id": "warhammer-40000", "label": "Warhammer 40,000", "facet": "game-system", "description": "The Warhammer 40,000 science-fiction setting and game family.", "broader": [], "aliases": ["warhammer-40k", "40k"], "status": "active", "filter": { "enabled": false, "group": "system", "order": 10 } },
+    { "id": "kill-team", "label": "Kill Team", "facet": "game-system", "description": "The Kill Team skirmish game within the Warhammer 40,000 setting.", "broader": ["warhammer-40000"], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "system", "order": 20 } },
+    { "id": "warhammer-age-of-sigmar", "label": "Warhammer Age of Sigmar", "facet": "game-system", "description": "The Warhammer Age of Sigmar fantasy setting and game family.", "broader": [], "aliases": ["age-of-sigmar", "aos"], "status": "active", "filter": { "enabled": false, "group": "system", "order": 30 } },
+    { "id": "death-guard", "label": "Death Guard", "facet": "faction", "description": "Miniatures identified as belonging to the Death Guard faction.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": true, "group": "faction", "order": 10 } },
+    { "id": "necrons", "label": "Necrons", "facet": "faction", "description": "Miniatures identified as belonging to the Necrons faction.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": true, "group": "faction", "order": 20 } },
+    { "id": "emperors-children", "label": "Emperor's Children", "facet": "faction", "description": "Miniatures identified as belonging to the Emperor's Children faction.", "broader": [], "aliases": ["emperor-s-children"], "status": "active", "filter": { "enabled": true, "group": "faction", "order": 30 } },
+    { "id": "blooded", "label": "Blooded", "facet": "faction", "description": "Miniatures identified as belonging to the Blooded faction or kill team.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": true, "group": "faction", "order": 40 } },
+    { "id": "mandrakes", "label": "Mandrakes", "facet": "faction", "description": "Miniatures identified as belonging to the Mandrakes faction or kill team.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": true, "group": "faction", "order": 50 } },
+    { "id": "soulblight-gravelords", "label": "Soulblight Gravelords", "facet": "faction", "description": "Miniatures identified as belonging to the Soulblight Gravelords faction.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": true, "group": "faction", "order": 60 } },
+    { "id": "plague-marines", "label": "Plague Marines", "facet": "faction", "description": "A Death Guard force designation used by existing records; retained as a stable classification ID.", "broader": ["death-guard"], "aliases": ["plague-marine"], "status": "active", "filter": { "enabled": false, "group": "faction", "order": 70 } },
+    { "id": "infantry", "label": "Infantry", "facet": "subject", "description": "One or more infantry-scale miniatures are the primary subject.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 10 } },
+    { "id": "character", "label": "Character", "facet": "subject", "description": "A leader or character-scale miniature is the primary subject.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 20 } },
+    { "id": "vehicle", "label": "Vehicle", "facet": "subject", "description": "A vehicle miniature is the primary subject.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 30 } },
+    { "id": "armored-transport", "label": "Armored Transport", "facet": "subject", "description": "An armored vehicle intended to transport troops is the primary subject.", "broader": ["vehicle"], "aliases": ["armoured-transport"], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 40 } },
+    { "id": "daemon-engine", "label": "Daemon Engine", "facet": "subject", "description": "A mechanical war machine with daemonic characteristics; faction associations remain on individual items.", "broader": ["vehicle"], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 50 } },
+    { "id": "monster", "label": "Monster", "facet": "subject", "description": "A monster-scale creature is the primary subject.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 60 } },
+    { "id": "construct", "label": "Construct", "facet": "subject", "description": "An artificial or animated construct is the primary subject.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 70 } },
+    { "id": "swarm", "label": "Swarm", "facet": "subject", "description": "A grouped swarm of small creatures or constructs is the primary subject.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 80 } },
+    { "id": "beast", "label": "Beast", "facet": "subject", "description": "An animalistic or beast-like creature is the primary subject.", "broader": [], "aliases": [], "status": "active", "filter": { "enabled": false, "group": "subject", "order": 90 } }
+  ]
+}

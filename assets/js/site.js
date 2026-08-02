@@ -40,25 +40,128 @@ revealHashDetails();
 const routeDialog = document.querySelector('[data-route-dialog]');
 const routeOpen = document.querySelector('[data-route-open]');
 const routeClose = document.querySelector('[data-route-close]');
-const routeLandmarks = [...document.querySelectorAll('[data-route-landmark]')];
+const routeMapViewport = document.querySelector('[data-route-map-viewport]');
+const routeMapCanvas = document.querySelector('[data-route-map-canvas]');
+const routeMapPlaces = [...document.querySelectorAll('[data-route-map-place]')];
+const routeMapZoomIn = document.querySelector('[data-route-map-zoom-in]');
+const routeMapZoomOut = document.querySelector('[data-route-map-zoom-out]');
+const routeMapReset = document.querySelector('[data-route-map-reset]');
+const routeMapFullscreenClose = document.querySelector('[data-route-map-fullscreen-close]');
+const routeMapZoomStatus = document.querySelector('[data-route-map-zoom-status]');
+const routeMapHint = document.querySelector('[data-route-map-hint]');
+const routeMapMobile = window.matchMedia('(max-width: 759px)');
+const routeMapPointers = new Map();
+let routeMapScale = 1;
+let routeMapX = 0;
+let routeMapY = 0;
+let routeMapLastPinchDistance = 0;
+let routeMapDragged = false;
 
-function closeRouteLandmarks(exception) {
-  routeLandmarks.forEach((landmark) => {
-    if (landmark === exception) return;
-    landmark.classList.remove('is-active');
-    landmark.setAttribute('aria-expanded', 'false');
+function routeMapMinimumScale() {
+  return 1;
+}
+
+function closeRouteMapPlaces(exception) {
+  routeMapPlaces.forEach((place) => {
+    if (place === exception) return;
+    place.setAttribute('aria-expanded', 'false');
   });
+  if (!exception) routeMapViewport?.classList.remove('has-open-place');
+}
+
+function constrainRouteMap() {
+  if (!routeMapViewport) return;
+  const width = routeMapViewport.clientWidth;
+  const height = routeMapViewport.clientHeight;
+  const scaledWidth = width * routeMapScale;
+  const scaledHeight = height * routeMapScale;
+  routeMapX = Math.min(0, Math.max(width - scaledWidth, routeMapX));
+  routeMapY = Math.min(0, Math.max(height - scaledHeight, routeMapY));
+}
+
+function renderRouteMap(announce = false) {
+  if (!routeMapViewport || !routeMapCanvas) return;
+  constrainRouteMap();
+  routeMapCanvas.style.transform = `translate(${routeMapX}px, ${routeMapY}px) scale(${routeMapScale})`;
+  routeMapViewport.classList.toggle('is-zoomed', routeMapScale > routeMapMinimumScale() + 0.01);
+  if (routeMapZoomStatus) routeMapZoomStatus.value = `${Math.round(routeMapScale * 100)}%`;
+  if (announce && routeMapZoomStatus) routeMapZoomStatus.textContent = `${Math.round(routeMapScale * 100)}%`;
+}
+
+function zoomRouteMap(nextScale, clientX, clientY, announce = true) {
+  if (!routeMapViewport) return;
+  const minimum = routeMapMinimumScale();
+  const scale = Math.max(minimum, Math.min(4, nextScale));
+  const bounds = routeMapViewport.getBoundingClientRect();
+  const focusX = (clientX ?? (bounds.left + bounds.width / 2)) - bounds.left;
+  const focusY = (clientY ?? (bounds.top + bounds.height / 2)) - bounds.top;
+  const contentX = (focusX - routeMapX) / routeMapScale;
+  const contentY = (focusY - routeMapY) / routeMapScale;
+  routeMapX = focusX - contentX * scale;
+  routeMapY = focusY - contentY * scale;
+  routeMapScale = scale;
+  renderRouteMap(announce);
+}
+
+function resetRouteMap(announce = false) {
+  routeMapScale = routeMapMinimumScale();
+  if (routeMapViewport) {
+    routeMapX = (routeMapViewport.clientWidth - routeMapViewport.clientWidth * routeMapScale) / 2;
+    routeMapY = (routeMapViewport.clientHeight - routeMapViewport.clientHeight * routeMapScale) / 2;
+  } else {
+    routeMapX = 0;
+    routeMapY = 0;
+  }
+  renderRouteMap(announce);
+}
+
+function enterRouteMapFullscreen() {
+  if (!routeMapViewport || !routeMapMobile.matches) return;
+  closeRouteMapPlaces();
+  routeMapViewport.classList.add('is-fullscreen');
+  routeMapViewport.setAttribute('aria-label', 'Full-screen interactive rally route map. Pinch or use controls to zoom, and swipe or use arrow keys to pan.');
+  if (routeMapHint) routeMapHint.textContent = 'Pinch to zoom. Swipe to pan.';
+  resetRouteMap(true);
+  routeMapFullscreenClose?.focus();
+}
+
+function exitRouteMapFullscreen() {
+  if (!routeMapViewport?.classList.contains('is-fullscreen')) return;
+  routeMapViewport.classList.remove('is-fullscreen');
+  routeMapViewport.setAttribute('aria-label', 'Interactive rally route map. Tap open map space for a full-screen view.');
+  if (routeMapHint) routeMapHint.textContent = 'Tap open map space for full screen.';
+  resetRouteMap();
+  routeMapViewport.focus();
+}
+
+function updateRouteMapMode() {
+  if (!routeMapViewport?.classList.contains('is-fullscreen') && routeMapHint) {
+    routeMapHint.textContent = routeMapMobile.matches
+      ? 'Tap open map space for full screen.'
+      : 'Use controls to zoom. Drag to pan when zoomed.';
+  }
+  resetRouteMap();
 }
 
 if (routeDialog && routeOpen) {
-  routeOpen.addEventListener('click', () => routeDialog.showModal());
-  routeClose?.addEventListener('click', () => routeDialog.close());
+  routeOpen.addEventListener('click', () => {
+    routeDialog.showModal();
+    if (routeMapMobile.matches) {
+      window.requestAnimationFrame(() => enterRouteMapFullscreen());
+      return;
+    }
+    if (routeMapHint) routeMapHint.textContent = 'Use controls to zoom. Drag to pan when zoomed.';
+    window.requestAnimationFrame(() => resetRouteMap());
+  });
+  routeClose?.addEventListener('click', () => {
+    exitRouteMapFullscreen();
+    routeDialog.close();
+  });
   routeDialog.addEventListener('click', (event) => {
     if (event.target === routeDialog) {
       routeDialog.close();
       return;
     }
-    if (!event.target.closest('[data-route-landmark]')) closeRouteLandmarks();
   });
   routeDialog.addEventListener('cancel', (event) => {
     event.preventDefault();
@@ -67,23 +170,124 @@ if (routeDialog && routeOpen) {
   routeDialog.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       event.preventDefault();
+      if (routeMapViewport?.classList.contains('is-fullscreen')) {
+        exitRouteMapFullscreen();
+        if (routeMapMobile.matches) routeDialog.close();
+        return;
+      }
       routeDialog.close();
     }
   });
   routeDialog.addEventListener('close', () => {
-    closeRouteLandmarks();
+    routeMapViewport?.classList.remove('is-fullscreen');
+    closeRouteMapPlaces();
+    resetRouteMap();
     routeOpen.focus();
   });
-
-  routeLandmarks.forEach((landmark) => {
-    landmark.addEventListener('click', () => {
-      const willOpen = !landmark.classList.contains('is-active');
-      closeRouteLandmarks(landmark);
-      landmark.classList.toggle('is-active', willOpen);
-      landmark.setAttribute('aria-expanded', String(willOpen));
-    });
-  });
 }
+
+routeMapPlaces.forEach((place) => {
+  place.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const willOpen = place.getAttribute('aria-expanded') !== 'true';
+    closeRouteMapPlaces(place);
+    place.setAttribute('aria-expanded', String(willOpen));
+    routeMapViewport?.classList.toggle('has-open-place', willOpen);
+  });
+});
+
+routeMapViewport?.addEventListener('click', (event) => {
+  if (event.target.closest('[data-route-map-place], .route-map__controls')) return;
+  closeRouteMapPlaces();
+  if (routeMapMobile.matches && !routeMapViewport.classList.contains('is-fullscreen') && !routeMapDragged) {
+    enterRouteMapFullscreen();
+  }
+  routeMapDragged = false;
+});
+
+routeMapZoomIn?.addEventListener('click', () => zoomRouteMap(routeMapScale * 1.3));
+routeMapZoomOut?.addEventListener('click', () => zoomRouteMap(routeMapScale / 1.3));
+routeMapReset?.addEventListener('click', () => resetRouteMap(true));
+routeMapFullscreenClose?.addEventListener('click', () => {
+  exitRouteMapFullscreen();
+  if (routeMapMobile.matches) routeDialog?.close();
+});
+
+routeMapViewport?.addEventListener('wheel', (event) => {
+  if (routeMapMobile.matches) return;
+  event.preventDefault();
+  zoomRouteMap(routeMapScale * (event.deltaY < 0 ? 1.12 : 0.89), event.clientX, event.clientY, false);
+}, { passive: false });
+
+routeMapViewport?.addEventListener('pointerdown', (event) => {
+  if (event.target.closest('[data-route-map-place], .route-map__controls')) return;
+  if (routeMapMobile.matches && !routeMapViewport.classList.contains('is-fullscreen')) return;
+  routeMapPointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  routeMapViewport.setPointerCapture(event.pointerId);
+  routeMapDragged = false;
+  if (routeMapPointers.size === 2) {
+    const points = [...routeMapPointers.values()];
+    routeMapLastPinchDistance = Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y);
+  }
+});
+
+routeMapViewport?.addEventListener('pointermove', (event) => {
+  const previous = routeMapPointers.get(event.pointerId);
+  if (!previous) return;
+  routeMapPointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  const points = [...routeMapPointers.values()];
+  if (points.length >= 2) {
+    const distance = Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y);
+    const midpointX = (points[0].x + points[1].x) / 2;
+    const midpointY = (points[0].y + points[1].y) / 2;
+    if (routeMapLastPinchDistance) zoomRouteMap(routeMapScale * (distance / routeMapLastPinchDistance), midpointX, midpointY, false);
+    routeMapLastPinchDistance = distance;
+    routeMapDragged = true;
+    return;
+  }
+  if (routeMapScale <= routeMapMinimumScale() + 0.01) return;
+  const deltaX = event.clientX - previous.x;
+  const deltaY = event.clientY - previous.y;
+  if (Math.abs(deltaX) + Math.abs(deltaY) > 1) routeMapDragged = true;
+  routeMapX += deltaX;
+  routeMapY += deltaY;
+  routeMapViewport.classList.add('is-dragging');
+  renderRouteMap();
+});
+
+function endRouteMapPointer(event) {
+  routeMapPointers.delete(event.pointerId);
+  routeMapLastPinchDistance = 0;
+  routeMapViewport?.classList.remove('is-dragging');
+}
+
+routeMapViewport?.addEventListener('pointerup', endRouteMapPointer);
+routeMapViewport?.addEventListener('pointercancel', endRouteMapPointer);
+
+routeMapViewport?.addEventListener('keydown', (event) => {
+  if (event.target.closest('button')) return;
+  if (event.key === '+' || event.key === '=') {
+    event.preventDefault();
+    zoomRouteMap(routeMapScale * 1.3);
+  } else if (event.key === '-') {
+    event.preventDefault();
+    zoomRouteMap(routeMapScale / 1.3);
+  } else if (event.key === '0') {
+    event.preventDefault();
+    resetRouteMap(true);
+  } else if (event.key.startsWith('Arrow') && routeMapScale > routeMapMinimumScale()) {
+    event.preventDefault();
+    const step = 32;
+    if (event.key === 'ArrowLeft') routeMapX += step;
+    if (event.key === 'ArrowRight') routeMapX -= step;
+    if (event.key === 'ArrowUp') routeMapY += step;
+    if (event.key === 'ArrowDown') routeMapY -= step;
+    renderRouteMap();
+  }
+});
+
+window.addEventListener('resize', () => resetRouteMap());
+routeMapMobile.addEventListener('change', updateRouteMapMode);
 
 const backToTop = document.createElement('button');
 backToTop.className = 'back-to-top';

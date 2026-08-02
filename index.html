@@ -12,12 +12,12 @@
   <link rel="icon" type="image/png" sizes="256x256" href="assets/images/branding/wasted-wargaming-favicon.png">
   <link rel="apple-touch-icon" href="assets/images/branding/wasted-wargaming-favicon.png">
   <title>Wasted Wargaming | New Players Welcome</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260801-neighborhood-map">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260802-parking-square">
   <script src="assets/js/events-data.js?v=20260731-octarius" defer></script>
   <script src="assets/js/contributors-data.js" defer></script>
   <script src="assets/js/gallery-data.js?v=20260801-featured-gallery-2" defer></script>
   <script src="assets/js/navigation.js?v=20260731-path-pages" defer></script>
-  <script src="assets/js/site.js?v=20260801-neighborhood-map" defer></script>
+  <script src="assets/js/site.js?v=20260802-parking-zones" defer></script>
   <script src="assets/js/contributor-ui.js" defer></script>
   <script src="assets/js/home-gallery.js?v=20260731-featured-only" defer></script>
 </head>
@@ -231,22 +231,23 @@
                   <svg class="route-terminal__map" viewBox="0 0 360 180" role="img" aria-labelledby="route-preview-title route-preview-desc">
                     <title id="route-preview-title">Walking route from Joystick to Dice City</title>
                     <desc id="route-preview-desc">A schematic map showing a short route along Flat Shoals Avenue from Joystick at 485 to Dice City at 512.</desc>
-                    <path class="route-map__block" d="M-16 52 125 -12M39 202 376 36M238 202 376 134" />
-                    <path class="route-map__street" d="M-12 173 372 -18" />
-                    <path class="route-map__route-shadow" d="M82 126 276 30" />
-                    <path class="route-map__route" d="M82 126 276 30" />
-                    <g class="route-map__origin" transform="translate(82 126)">
+                    <path class="route-map__block" d="M-20 34 154 -10M-20 151H380M310-10V190" />
+                    <path class="route-map__street" d="M35 -10 282 190" />
+                    <path class="route-map__route-shadow" d="M94 58 116 72 241 151H288V126" />
+                    <path class="route-map__route" d="M94 58 116 72 241 151H288V126" />
+                    <g class="route-map__origin" transform="translate(94 58)">
                       <circle r="8" />
                       <circle class="route-map__ping" r="15" />
                     </g>
-                    <g class="route-map__destination" transform="translate(276 30)">
+                    <g class="route-map__destination" transform="translate(288 126)">
                       <circle class="route-map__beacon" r="9" />
                       <circle class="route-map__radar" r="19" />
                       <circle class="route-map__radar route-map__radar--late" r="31" />
                     </g>
-                    <text x="55" y="155">JOYSTICK // 485</text>
-                    <text x="201" y="18">DICE CITY // 512</text>
-                    <text class="route-map__street-label" x="136" y="121" transform="rotate(-26 136 121)">FLAT SHOALS AVE</text>
+                    <text x="35" y="48">JOYSTICK // 485</text>
+                    <text x="238" y="116">DICE CITY // 512</text>
+                    <text class="route-map__street-label" x="109" y="57" transform="rotate(39 109 57)">FLAT SHOALS</text>
+                    <text class="route-map__street-label" x="205" y="168">GLENWOOD AVE</text>
                   </svg>
                   <span class="route-terminal__scan" aria-hidden="true"></span>
                 </span>
@@ -271,77 +272,82 @@
                 <p class="route-dialog__eyebrow"><span aria-hidden="true"></span> Rally route // Flat Shoals Avenue</p>
                 <h2 id="route-dialog-title">Meet at the bar.<br>Move out together.</h2>
               </div>
-              <p>The route from Joystick to Dice City stays on the same short stretch of Flat Shoals Avenue. East Atlanta Comics is right next door to the game space.</p>
+              <p>Cross Flat Shoals after leaving Joystick, follow the short route southeast to Glenwood, then use the Glenwood-side entrance for Dice City. East Atlanta Comics is next to the game space.</p>
             </div>
-            <div class="route-dialog__map-wrap">
-              <svg class="route-dialog__map" viewBox="0 0 1000 650" preserveAspectRatio="none" role="img" aria-labelledby="route-full-title route-full-desc">
+            <div class="route-dialog__map-wrap" data-route-map-viewport tabindex="0" aria-label="Interactive rally route map. Use the zoom controls or keyboard plus and minus keys to zoom; use arrow keys to pan when zoomed.">
+              <div class="route-map__canvas" data-route-map-canvas>
+              <svg class="route-dialog__map" viewBox="0 0 1120 650" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="route-full-title route-full-desc">
                 <title id="route-full-title">Rally route through East Atlanta Village</title>
-                <desc id="route-full-desc">A schematic neighborhood map showing the walking route from Joystick Gamebar to Dice City, nearby streets and businesses, and preliminary parking notes.</desc>
-                <g class="route-neighborhood__blocks" aria-hidden="true">
-                  <path d="M-40 96H1040M-40 284H1040M-40 472H1040M-40 590H1040" />
-                  <path d="M175-30V680M650-30V680M850-30V680" />
-                </g>
+                <desc id="route-full-desc">A north-up schematic showing the walking route from Joystick Gamebar, across Flat Shoals Avenue, southeast to Glenwood Avenue, and through the Glenwood-side entrance to Dice City. Nearby businesses are labeled for orientation.</desc>
                 <g class="route-neighborhood__roads" aria-hidden="true">
-                  <path d="M-40 284H1040" />
-                  <path d="M650-30V680" />
-                  <path d="M318-30 815 680" />
-                  <path d="M180-30 500 284" />
-                  <path d="M-40 96H1040" />
+                  <path class="route-road route-road--metropolitan" d="M-40 112 548-24" />
+                  <path class="route-road route-road--metropolitan-place" d="M548-24 1034 348" />
+                  <path class="route-road route-road--haas" d="M1046-30V680" />
+                  <path class="route-road route-road--flat-shoals" d="M90-28 758 680" />
+                  <path class="route-road route-road--glenwood" d="M-40 520H1160" />
+                </g>
+                <g class="route-neighborhood__crosswalks" aria-hidden="true">
+                  <path d="M371 290l-24 24M383 302l-24 24M395 314l-24 24M407 326l-24 24" />
+                  <path d="M659 493v54M673 493v54M687 493v54M701 493v54" />
                 </g>
                 <g class="route-neighborhood__route" aria-hidden="true">
-                  <path class="route-map__route-shadow route-map__route-shadow--wide" d="M420 117 608 386" />
-                  <path class="route-map__route route-map__route--wide" d="M420 117 608 386" />
+                  <path class="route-map__route-shadow route-map__route-shadow--wide" d="M350 296 407 342 654 480H805V417" />
+                  <path class="route-map__route route-map__route--wide" d="M350 296 407 342 654 480H805V417" />
                 </g>
-                <g class="route-map__origin" transform="translate(420 117)" aria-hidden="true">
+                <g class="route-map__origin" transform="translate(350 296)" aria-hidden="true">
                   <circle r="12" />
                   <circle class="route-map__ping" r="24" />
                 </g>
-                <g class="route-map__destination" transform="translate(608 386)" aria-hidden="true">
+                <g class="route-map__destination" transform="translate(805 417)" aria-hidden="true">
                   <circle r="14" />
                   <circle class="route-map__radar" r="31" />
                   <circle class="route-map__radar route-map__radar--late" r="50" />
                 </g>
                 <g class="route-neighborhood__labels" aria-hidden="true">
-                  <text x="34" y="272">GLENWOOD AVE SE</text>
-                  <text x="673" y="176" transform="rotate(90 673 176)">HAAS AVE SE</text>
-                  <text x="41" y="83">METROPOLITAN AVE SE</text>
-                  <text x="236" y="43" transform="rotate(44 236 43)">METROPOLITAN PL SE</text>
-                  <text x="540" y="325" transform="rotate(55 540 325)">FLAT SHOALS AVE SE</text>
+                  <text class="route-map__street-label" x="34" y="85" transform="rotate(-13 34 85)">METROPOLITAN AVE SE</text>
+                  <text class="route-map__street-label" x="625" y="55" transform="rotate(44 625 55)">METROPOLITAN PL SE</text>
+                  <text class="route-map__street-label" x="1072" y="210" transform="rotate(90 1072 210)">HAAS AVE SE</text>
+                  <text class="route-map__street-label" x="305" y="112" transform="rotate(46 305 112)">FLAT SHOALS AVE SE</text>
+                  <text class="route-map__street-label" x="34" y="508">GLENWOOD AVE SE</text>
+                  <text class="route-map__crossing-label" x="365" y="367">CROSS FLAT SHOALS</text>
+                  <text class="route-map__entrance-label" x="590" y="455">THROUGH GLENWOOD ENTRANCE</text>
+                  <text class="route-map__cardinal" x="560" y="28">N</text>
+                  <text class="route-map__cardinal" x="560" y="635">S</text>
+                  <text class="route-map__cardinal" x="18" y="330">W</text>
+                  <text class="route-map__cardinal" x="1100" y="330">E</text>
                 </g>
               </svg>
-              <div class="route-landmarks" aria-label="Nearby places and parking notes">
-                <button class="route-landmark route-landmark--core route-landmark--joystick" style="--map-x:42%;--map-y:18%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">J</span><span class="route-landmark__tooltip"><strong>Joystick Gamebar</strong><small>485 Flat Shoals Ave SE · rally point</small></span>
-                </button>
-                <button class="route-landmark route-landmark--business" style="--map-x:36%;--map-y:13%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>Argosy</strong><small>470 Flat Shoals Ave SE</small></span>
-                </button>
-                <button class="route-landmark route-landmark--business" style="--map-x:46%;--map-y:25%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>The EARL</strong><small>488 Flat Shoals Ave SE</small></span>
-                </button>
-                <button class="route-landmark route-landmark--business" style="--map-x:39%;--map-y:43%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>Mary's</strong><small>1287 Glenwood Ave SE</small></span>
-                </button>
-                <button class="route-landmark route-landmark--parking" style="--map-x:35%;--map-y:51%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">P?</span><span class="route-landmark__tooltip"><strong>Lot behind Mary's</strong><small>Parking area identified. Event use is not yet confirmed.</small></span>
-                </button>
-                <button class="route-landmark route-landmark--warning" style="--map-x:69%;--map-y:37%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">!</span><span class="route-landmark__tooltip"><strong>Holy Taco lot</strong><small>Private lot. Do not use for Wasted Wargaming parking.</small></span>
-                </button>
-                <button class="route-landmark route-landmark--parking" style="--map-x:69%;--map-y:56%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">P?</span><span class="route-landmark__tooltip"><strong>Haas Ave street parking</strong><small>Street parking is often available. Follow all posted signs.</small></span>
-                </button>
-                <button class="route-landmark route-landmark--featured" style="--map-x:58%;--map-y:55%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">EAC</span><span class="route-landmark__tooltip"><strong>East Atlanta Comics</strong><small>508 Flat Shoals Ave SE · local partner</small></span>
-                </button>
-                <button class="route-landmark route-landmark--core route-landmark--dice" style="--map-x:61%;--map-y:60%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">D</span><span class="route-landmark__tooltip"><strong>Dice City</strong><small>512 Flat Shoals Ave SE, Suite #2 · game site</small></span>
-                </button>
-                <button class="route-landmark route-landmark--business" style="--map-x:64%;--map-y:66%;" type="button" data-route-landmark aria-expanded="false">
-                  <span class="route-landmark__icon" aria-hidden="true">◆</span><span class="route-landmark__tooltip"><strong>Flatiron</strong><small>520 Flat Shoals Ave SE</small></span>
-                </button>
+                <div class="route-map__places" aria-label="Map places and parking notes">
+                  <button class="route-map__place" style="--map-x:18.3%;--map-y:31.5%;" type="button" data-route-map-place aria-expanded="false">Argosy<span>470 Flat Shoals Ave SE</span></button>
+                  <button class="route-map__place" style="--map-x:25.5%;--map-y:39.7%;" type="button" data-route-map-place aria-expanded="false">The EARL<span>488 Flat Shoals Ave SE</span></button>
+                  <button class="route-map__place route-map__place--core" style="--map-x:15.6%;--map-y:43.8%;" type="button" data-route-map-place aria-expanded="false">Joystick Gamebar<span>485 Flat Shoals Ave SE · rally point</span></button>
+                  <button class="route-map__place" style="--map-x:74.8%;--map-y:50.8%;" type="button" data-route-map-place aria-expanded="false">Holy Taco<span>Nearby landmark on Glenwood Avenue</span></button>
+                  <button class="route-map__place route-map__place--partner" style="--map-x:54.5%;--map-y:56.9%;" type="button" data-route-map-place aria-expanded="false">East Atlanta Comics<span>508 Flat Shoals Ave SE · local partner</span></button>
+                  <button class="route-map__place route-map__place--core" style="--map-x:74.5%;--map-y:61.8%;" type="button" data-route-map-place aria-expanded="false">Dice City<span>512 Flat Shoals Ave SE, Suite #2 · game site</span></button>
+                  <button class="route-map__place" style="--map-x:53.9%;--map-y:87.2%;" type="button" data-route-map-place aria-expanded="false">Mary's<span>1287 Glenwood Ave SE</span></button>
+                  <button class="route-map__place" style="--map-x:70.5%;--map-y:87.2%;" type="button" data-route-map-place aria-expanded="false">Flatiron<span>520 Flat Shoals Ave SE</span></button>
+                  <button class="route-map__place" style="--map-x:41.8%;--map-y:93.1%;" type="button" data-route-map-place aria-expanded="false">Banshee<span>Nearby landmark on Glenwood Avenue</span></button>
+                  <button class="route-map__parking-zone route-map__parking-zone--likely" style="--zone-x:93.2%;--zone-y:17%;--zone-width:5.5%;--zone-height:52%;" type="button" data-route-map-place aria-expanded="false" aria-label="View Haas Avenue street parking guidance">
+                    <span><strong>Likely street parking</strong>Street parking is usually available on Haas Avenue. Pay attention to driveways and all posted street signs.</span>
+                  </button>
+                  <button class="route-map__parking-zone route-map__parking-zone--avoid" style="--zone-x:80.5%;--zone-y:62%;--zone-width:10%;" type="button" data-route-map-place aria-expanded="false" aria-label="View Holy Taco parking warning">
+                    <span><strong>Do not park here</strong>Do not park in the parking lot behind Holy Taco.</span>
+                  </button>
+                </div>
               </div>
-              <div class="route-map-legend" aria-hidden="true"><span><i class="is-route"></i> Walking route</span><span><i class="is-place"></i> Nearby place</span><span><i class="is-parking"></i> Parking note</span></div>
+              <div class="route-map__controls" aria-label="Map zoom controls">
+                <button type="button" data-route-map-zoom-in aria-label="Zoom map in">+</button>
+                <button type="button" data-route-map-zoom-out aria-label="Zoom map out">−</button>
+                <button type="button" data-route-map-reset>Reset</button>
+                <button class="route-map__fullscreen-close" type="button" data-route-map-fullscreen-close aria-label="Close full-screen map">×</button>
+                <output data-route-map-zoom-status aria-live="polite">100%</output>
+              </div>
+              <p class="route-map__hint" data-route-map-hint>Use controls to zoom. Drag to pan when zoomed.</p>
+              <div class="route-map-legend" aria-hidden="true">
+                <span><i class="is-route"></i> Walking route</span>
+                <span><i class="is-parking-likely"></i> Likely parking</span>
+                <span><i class="is-parking-avoid"></i> Avoid parking</span>
+              </div>
               <span class="route-terminal__scan" aria-hidden="true"></span>
             </div>
             <div class="route-dialog__details">
@@ -351,7 +357,7 @@
             </div>
             <div class="route-dialog__actions">
               <a class="button" href="https://www.google.com/maps/dir/?api=1&amp;origin=485+Flat+Shoals+Ave+SE%2C+Atlanta%2C+GA+30316&amp;destination=512+Flat+Shoals+Ave+SE%2C+Atlanta%2C+GA+30316&amp;travelmode=walking" target="_blank" rel="noopener noreferrer">Open walking directions <span aria-hidden="true">↗</span></a>
-              <p>Parking markers identify nearby possibilities, not approved event parking. Follow posted signs. Final parking, entrance, and accessibility guidance will be added after venue confirmation.</p>
+              <p>This map is a simplified walking guide. Follow posted signs. Final parking and accessibility guidance will be added after venue confirmation.</p>
             </div>
           </div>
         </dialog>
